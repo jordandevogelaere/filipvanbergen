@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-sage-900: #2d3f2d;
+  --color-sage-800: #3a5a3a;
+  --color-sage-700: #4a6b4a;
+  --color-sage-600: #5a7a5a;
+  --color-sage-500: #6b8e6b;
+  --color-sage-200: #c8d8c8;
+  --color-sage-100: #e4ede4;
+  --font-heading: "Raleway", Arial, Helvetica, sans-serif;
+  --font-body: "Raleway", Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #333333;
+  font-family: var(--font-body);
+}
