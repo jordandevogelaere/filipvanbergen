@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.fvbmediation.com/nl/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.fvbmediation.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fvbmediation.com/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.fvbmediation.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.fvbmediation.com/nl/" />
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.fvbmediation.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.fvbmediation.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fvbmediation.com/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.fvbmediation.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.fvbmediation.com/nl/" />
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.fvbmediation.com/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.fvbmediation.com/nl/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fvbmediation.com/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.fvbmediation.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.fvbmediation.com/nl/" />
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.fvbmediation.com/nl/algemene-voorwaarden/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.fvbmediation.com/nl/algemene-voorwaarden/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fvbmediation.com/en/algemene-voorwaarden/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.fvbmediation.com/fr/algemene-voorwaarden/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.fvbmediation.com/nl/algemene-voorwaarden/" />
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-03-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.fvbmediation.com/en/algemene-voorwaarden/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.fvbmediation.com/nl/algemene-voorwaarden/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fvbmediation.com/en/algemene-voorwaarden/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.fvbmediation.com/fr/algemene-voorwaarden/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.fvbmediation.com/nl/algemene-voorwaarden/" />
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-03-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.fvbmediation.com/fr/algemene-voorwaarden/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.fvbmediation.com/nl/algemene-voorwaarden/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fvbmediation.com/en/algemene-voorwaarden/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.fvbmediation.com/fr/algemene-voorwaarden/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.fvbmediation.com/nl/algemene-voorwaarden/" />
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-03-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.fvbmediation.com/nl/privacybeleid/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.fvbmediation.com/nl/privacybeleid/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fvbmediation.com/en/privacybeleid/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.fvbmediation.com/fr/privacybeleid/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.fvbmediation.com/nl/privacybeleid/" />
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-03-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.fvbmediation.com/en/privacybeleid/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.fvbmediation.com/nl/privacybeleid/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fvbmediation.com/en/privacybeleid/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.fvbmediation.com/fr/privacybeleid/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.fvbmediation.com/nl/privacybeleid/" />
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-03-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.fvbmediation.com/fr/privacybeleid/</loc>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://www.fvbmediation.com/nl/privacybeleid/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.fvbmediation.com/en/privacybeleid/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.fvbmediation.com/fr/privacybeleid/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.fvbmediation.com/nl/privacybeleid/" />
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+    <lastmod>2026-03-20</lastmod>
+  </url>
+</urlset>

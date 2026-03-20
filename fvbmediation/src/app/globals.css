@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-tan-900: #4a3f35;
+  --color-tan-800: #5c4f42;
+  --color-tan-700: #8b7355;
+  --color-tan-600: #a89279;
+  --color-tan-500: #c4b59a;
+  --color-tan-200: #d4c8b5;
+  --color-tan-100: #ede7dc;
+  --font-heading: "Raleway", Arial, Helvetica, sans-serif;
+  --font-body: "Raleway", Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #333333;
+  font-family: var(--font-body);
+}
