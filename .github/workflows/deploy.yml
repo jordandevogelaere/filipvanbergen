@@ -1,0 +1,114 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      advocaten: ${{ steps.changes.outputs.advocaten }}
+      mediation: ${{ steps.changes.outputs.mediation }}
+      arbitration: ${{ steps.changes.outputs.arbitration }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - id: changes
+        run: |
+          if git diff --name-only HEAD~1 HEAD | grep -q '^fvbadvocaten/'; then
+            echo "advocaten=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "advocaten=false" >> "$GITHUB_OUTPUT"
+          fi
+          if git diff --name-only HEAD~1 HEAD | grep -q '^fvbmediation/'; then
+            echo "mediation=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "mediation=false" >> "$GITHUB_OUTPUT"
+          fi
+          if git diff --name-only HEAD~1 HEAD | grep -q '^fvbarbitration/'; then
+            echo "arbitration=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "arbitration=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy-advocaten:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.advocaten == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fvbadvocaten
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: fvbadvocaten/package-lock.json
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=fvbadvocaten
+          workingDirectory: fvbadvocaten
+
+  deploy-mediation:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.mediation == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fvbmediation
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: fvbmediation/package-lock.json
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=fvbmediation
+          workingDirectory: fvbmediation
+
+  deploy-arbitration:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.arbitration == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fvbarbitration
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: fvbarbitration/package-lock.json
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=fvbarbitration
+          workingDirectory: fvbarbitration
