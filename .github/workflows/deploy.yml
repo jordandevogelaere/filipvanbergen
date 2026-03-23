@@ -15,24 +15,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - id: changes
         run: |
-          if git diff --name-only HEAD~1 HEAD | grep -q '^fvbadvocaten/'; then
+          BASE=${{ github.event.before }}
+          # Fall back to HEAD~1 if before is all zeros (first push)
+          if [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            BASE=$(git rev-parse HEAD~1 2>/dev/null || echo "")
+          fi
+          if [ -z "$BASE" ]; then
+            # First ever commit — deploy everything
             echo "advocaten=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "advocaten=false" >> "$GITHUB_OUTPUT"
-          fi
-          if git diff --name-only HEAD~1 HEAD | grep -q '^fvbmediation/'; then
             echo "mediation=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "mediation=false" >> "$GITHUB_OUTPUT"
-          fi
-          if git diff --name-only HEAD~1 HEAD | grep -q '^fvbarbitration/'; then
             echo "arbitration=true" >> "$GITHUB_OUTPUT"
           else
-            echo "arbitration=false" >> "$GITHUB_OUTPUT"
+            CHANGED=$(git diff --name-only "$BASE" HEAD)
+            echo "advocaten=$(echo "$CHANGED" | grep -q '^fvbadvocaten/' && echo true || echo false)" >> "$GITHUB_OUTPUT"
+            echo "mediation=$(echo "$CHANGED" | grep -q '^fvbmediation/' && echo true || echo false)" >> "$GITHUB_OUTPUT"
+            echo "arbitration=$(echo "$CHANGED" | grep -q '^fvbarbitration/' && echo true || echo false)" >> "$GITHUB_OUTPUT"
           fi
 
   deploy-advocaten:
