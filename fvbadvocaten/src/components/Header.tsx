@@ -43,7 +43,7 @@ export default function Header({ locale }: { locale: Locale }) {
               </Link>
             ))}
             <Link
-              href={`/${locale}/contact/`}
+              href={`/${locale}/#contact`}
               className="bg-accent rounded-md px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:bg-accent/80"
             >
               {t.nav.vacatures}
@@ -74,7 +74,7 @@ export default function Header({ locale }: { locale: Locale }) {
             </Link>
           ))}
           <Link
-            href={`/${locale}/contact/`}
+            href={`/${locale}/#contact`}
             onClick={() => setMobileOpen(false)}
             className="bg-accent mt-2 block rounded-md px-4 py-3 text-center text-sm font-medium tracking-wide text-white transition hover:bg-accent/80"
           >
