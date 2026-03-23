@@ -32,12 +32,30 @@ export default function PracticeAreaCard({
   title,
   icon,
   description,
+  variant = "icon",
 }: {
   title: string;
   icon: string;
   description: string;
+  variant?: "icon" | "block";
 }) {
   const Icon = iconMap[icon] || Shield;
+
+  if (variant === "block") {
+    return (
+      <div className="bg-navy-800 group flex items-start gap-6 rounded-2xl p-8 shadow-lg">
+        <div className="bg-accent flex h-14 w-14 shrink-0 items-center justify-center rounded-xl">
+          <Icon className="h-7 w-7 text-white" />
+        </div>
+        <div>
+          <h3 className="text-lg font-bold tracking-wide text-white">
+            {title}
+          </h3>
+          <p className="mt-2 leading-relaxed text-white/70">{description}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="group text-center">

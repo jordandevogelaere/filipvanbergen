@@ -60,9 +60,16 @@ export default async function HomePage({
       <section id="praktijkgebieden" className="bg-steel-100 py-20">
         <Container>
           <SectionHeading>{t.practiceAreas.title}</SectionHeading>
-          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-            {t.practiceAreas.areas.map((area) => (
+          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {t.practiceAreas.areas.slice(0, -2).map((area) => (
               <PracticeAreaCard key={area.title} {...area} />
+            ))}
+          </div>
+
+          {/* Incasso & Leasing – featured blocks */}
+          <div className="mt-16 grid gap-8 md:grid-cols-2">
+            {t.practiceAreas.areas.slice(-2).map((area) => (
+              <PracticeAreaCard key={area.title} {...area} variant="block" />
             ))}
           </div>
         </Container>
