@@ -26,6 +26,7 @@ function nl() {
       practiceAreas: "Praktijkgebieden",
       whoIsWho: "Wie is wie",
       contact: "Contact",
+      vacatures: "Vacatures",
     },
     hero: { subtitle: "Advocatenkantoor" },
     mission: {
@@ -46,6 +47,8 @@ function nl() {
         { title: "Strafrecht", icon: "Gavel", description: "Verdediging in strafzaken, bijstand bij verhoor, slachtofferbijstand." },
         { title: "Transportrecht", icon: "Truck", description: "Juridisch advies bij transportgeschillen, CMR-vervoer, maritiem recht en logistiek." },
         { title: "Verzekeringsrecht", icon: "ShieldCheck", description: "Advies bij verzekeringsgeschillen, polisinterpretatie en schadeclaims." },
+        { title: "Incasso", icon: "Banknote", description: "Efficiënte invordering van onbetaalde facturen en schuldvorderingen. Wij zorgen voor een snelle en doeltreffende afhandeling van uw incassodossiers." },
+        { title: "Leasingmaatschappijen", icon: "FileText", description: "Gespecialiseerde juridische bijstand voor leasingmaatschappijen. Van contractopstelling tot geschillenbeslechting." },
       ],
     },
     whoIsWho: {
@@ -89,13 +92,6 @@ function nl() {
         role: "Administratie & Office Manager",
         bio: "Kaylee staat het team op administratief en organisatorisch vlak bij. Door haar accuratesse en stiptheid is zij een absolute meerwaarde voor het kantoor.",
       },
-    },
-    services: {
-      items: [
-        { title: "Incasso", description: "Efficiënte invordering van onbetaalde facturen en schuldvorderingen. Wij zorgen voor een snelle en doeltreffende afhandeling van uw incassodossiers." },
-        { title: "Leasingmaatschappijen", description: "Gespecialiseerde juridische bijstand voor leasingmaatschappijen. Van contractopstelling tot geschillenbeslechting." },
-        { title: "Vacatures", description: "Geïnteresseerd om deel uit te maken van ons team? Neem contact met ons op voor meer informatie over openstaande vacatures." },
-      ],
     },
     contact: {
       title: "Contact",
@@ -154,6 +150,7 @@ function en() {
       practiceAreas: "Practice Areas",
       whoIsWho: "Our Team",
       contact: "Contact",
+      vacatures: "Careers",
     },
     hero: { subtitle: "Law Firm" },
     mission: {
@@ -174,6 +171,8 @@ function en() {
         { title: "Criminal Law", icon: "Gavel", description: "Defence in criminal cases, assistance during interrogation, victim support." },
         { title: "Transport Law", icon: "Truck", description: "Legal advice on transport disputes, CMR carriage, maritime law and logistics." },
         { title: "Insurance Law", icon: "ShieldCheck", description: "Advice on insurance disputes, policy interpretation and damage claims." },
+        { title: "Debt Collection", icon: "Banknote", description: "Efficient recovery of unpaid invoices and debts. We ensure a quick and effective handling of your collection cases." },
+        { title: "Leasing Companies", icon: "FileText", description: "Specialised legal assistance for leasing companies. From contract drafting to dispute resolution." },
       ],
     },
     whoIsWho: {
@@ -217,13 +216,6 @@ function en() {
         role: "Administration & Office Manager",
         bio: "Kaylee supports the team in administrative and organisational matters. Through her accuracy and punctuality she is an absolute asset to the firm.",
       },
-    },
-    services: {
-      items: [
-        { title: "Debt Collection", description: "Efficient recovery of unpaid invoices and debts. We ensure a quick and effective handling of your collection cases." },
-        { title: "Leasing Companies", description: "Specialised legal assistance for leasing companies. From contract drafting to dispute resolution." },
-        { title: "Careers", description: "Interested in joining our team? Contact us for more information about open positions." },
-      ],
     },
     contact: {
       title: "Contact",
@@ -282,6 +274,7 @@ function fr() {
       practiceAreas: "Domaines",
       whoIsWho: "Notre équipe",
       contact: "Contact",
+      vacatures: "Offres d'emploi",
     },
     hero: { subtitle: "Cabinet d'avocats" },
     mission: {
@@ -302,6 +295,8 @@ function fr() {
         { title: "Droit pénal", icon: "Gavel", description: "Défense en matière pénale, assistance lors d'interrogatoires, aide aux victimes." },
         { title: "Droit des transports", icon: "Truck", description: "Conseil juridique en matière de litiges de transport, transport CMR, droit maritime et logistique." },
         { title: "Droit des assurances", icon: "ShieldCheck", description: "Conseil en matière de litiges d'assurance, interprétation de polices et réclamations de dommages." },
+        { title: "Recouvrement", icon: "Banknote", description: "Recouvrement efficace des factures impayées et des créances. Nous assurons un traitement rapide et efficace de vos dossiers de recouvrement." },
+        { title: "Sociétés de leasing", icon: "FileText", description: "Assistance juridique spécialisée pour les sociétés de leasing. De la rédaction de contrats à la résolution de litiges." },
       ],
     },
     whoIsWho: {
@@ -345,13 +340,6 @@ function fr() {
         role: "Administration & Office Manager",
         bio: "Kaylee soutient l'équipe sur le plan administratif et organisationnel. Par sa précision et sa ponctualité, elle est un atout absolu pour le cabinet.",
       },
-    },
-    services: {
-      items: [
-        { title: "Recouvrement", description: "Recouvrement efficace des factures impayées et des créances. Nous assurons un traitement rapide et efficace de vos dossiers de recouvrement." },
-        { title: "Sociétés de leasing", description: "Assistance juridique spécialisée pour les sociétés de leasing. De la rédaction de contrats à la résolution de litiges." },
-        { title: "Offres d'emploi", description: "Intéressé à rejoindre notre équipe ? Contactez-nous pour plus d'informations sur les postes vacants." },
-      ],
     },
     contact: {
       title: "Contact",

@@ -6,7 +6,7 @@ export default function Hero({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
 
   return (
-    <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       <Image
         src="/images/hero-crane.jpg"
         alt={locale === "en" ? "Antwerp construction cranes" : locale === "fr" ? "Grues de construction Anvers" : "Antwerpen bouwkranen"}

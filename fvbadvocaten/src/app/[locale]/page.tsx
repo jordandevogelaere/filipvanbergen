@@ -60,7 +60,7 @@ export default async function HomePage({
       <section id="praktijkgebieden" className="bg-steel-100 py-20">
         <Container>
           <SectionHeading>{t.practiceAreas.title}</SectionHeading>
-          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             {t.practiceAreas.areas.map((area) => (
               <PracticeAreaCard key={area.title} {...area} />
             ))}
@@ -218,24 +218,6 @@ export default async function HomePage({
                 </div>
               </div>
             </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Services highlight strip */}
-      <section className="bg-navy-700 py-20 text-white">
-        <Container>
-          <div className="grid gap-12 md:grid-cols-3">
-            {t.services.items.map((svc) => (
-              <div key={svc.title} className="text-center">
-                <h3 className="font-heading mb-3 text-xl font-bold">
-                  {svc.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-white/70">
-                  {svc.description}
-                </p>
-              </div>
-            ))}
           </div>
         </Container>
       </section>
