@@ -32,7 +32,7 @@ export default function Header({ locale }: { locale: Locale }) {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          <nav aria-label={locale === "en" ? "Main navigation" : locale === "fr" ? "Navigation principale" : "Hoofdnavigatie"} className="flex gap-8">
+          <nav aria-label={locale === "en" ? "Main navigation" : locale === "fr" ? "Navigation principale" : "Hoofdnavigatie"} className="flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -42,6 +42,12 @@ export default function Header({ locale }: { locale: Locale }) {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href={`/${locale}/contact/`}
+              className="bg-accent rounded-md px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:bg-accent/80"
+            >
+              {t.nav.vacatures}
+            </Link>
           </nav>
           <LanguageSwitcher locale={locale} />
         </div>
@@ -67,6 +73,13 @@ export default function Header({ locale }: { locale: Locale }) {
               {link.label}
             </Link>
           ))}
+          <Link
+            href={`/${locale}/contact/`}
+            onClick={() => setMobileOpen(false)}
+            className="bg-accent mt-2 block rounded-md px-4 py-3 text-center text-sm font-medium tracking-wide text-white transition hover:bg-accent/80"
+          >
+            {t.nav.vacatures}
+          </Link>
           <div className="border-navy-700 mt-2 border-t pt-3">
             <LanguageSwitcher locale={locale} />
           </div>

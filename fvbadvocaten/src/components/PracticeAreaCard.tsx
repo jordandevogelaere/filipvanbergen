@@ -9,6 +9,8 @@ import {
   Gavel,
   Truck,
   ShieldCheck,
+  Banknote,
+  FileText,
 } from "lucide-react";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -22,6 +24,8 @@ const iconMap: Record<string, React.ElementType> = {
   Gavel,
   Truck,
   ShieldCheck,
+  Banknote,
+  FileText,
 };
 
 export default function PracticeAreaCard({
