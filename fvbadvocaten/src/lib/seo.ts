@@ -81,19 +81,58 @@ export function buildJsonLd(locale: Locale) {
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Practice Areas",
-      itemListElement: [
-        "Liability Law",
-        "Employment Law",
-        "Construction Law",
-        "Family Law",
-        "Commercial Law",
-        "Tenancy Law",
-        "Insolvency Law",
-        "Criminal Law",
-        "Transport Law",
-        "Insurance Law",
-      ].map((name) => ({
+      name:
+        locale === "en"
+          ? "Practice Areas"
+          : locale === "fr"
+            ? "Domaines de pratique"
+            : "Praktijkgebieden",
+      itemListElement: (
+        locale === "en"
+          ? [
+              "Liability Law",
+              "Employment Law",
+              "Construction Law",
+              "Family Law",
+              "Commercial Law",
+              "Tenancy Law",
+              "Insolvency Law",
+              "Criminal Law",
+              "Transport Law",
+              "Insurance Law",
+              "Debt Collection",
+              "Leasing Companies",
+            ]
+          : locale === "fr"
+            ? [
+                "Droit de la responsabilité",
+                "Droit du travail",
+                "Droit de la construction",
+                "Droit de la famille",
+                "Droit commercial",
+                "Droit du bail",
+                "Droit de l'insolvabilité",
+                "Droit pénal",
+                "Droit des transports",
+                "Droit des assurances",
+                "Recouvrement",
+                "Sociétés de leasing",
+              ]
+            : [
+                "Aansprakelijkheidsrecht",
+                "Arbeidsrecht",
+                "Bouwrecht",
+                "Familierecht",
+                "Handelsrecht",
+                "Huurrecht",
+                "Insolventierecht",
+                "Strafrecht",
+                "Transportrecht",
+                "Verzekeringsrecht",
+                "Incasso",
+                "Leasingmaatschappijen",
+              ]
+      ).map((name) => ({
         "@type": "Offer",
         itemOffered: { "@type": "Service", name },
       })),

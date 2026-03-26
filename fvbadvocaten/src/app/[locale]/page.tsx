@@ -87,6 +87,8 @@ export default async function HomePage({
                 <img
                   src="/images/profile-filip.jpg"
                   alt="Filip van Bergen"
+                  width={1200}
+                  height={773}
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -234,6 +236,8 @@ export default async function HomePage({
         <img
           src="/images/contact-street.jpg"
           alt="Straat Antwerpen"
+          width={1920}
+          height={1440}
           className="h-full w-full object-cover"
         />
       </section>
