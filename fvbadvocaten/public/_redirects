@@ -1,0 +1,7 @@
+# Redirect non-prefixed URLs to Dutch (/nl/) default language
+/contact/ /nl/contact/ 301
+/contact /nl/contact/ 301
+/privacybeleid/ /nl/privacybeleid/ 301
+/privacybeleid /nl/privacybeleid/ 301
+/algemene-voorwaarden/ /nl/algemene-voorwaarden/ 301
+/algemene-voorwaarden /nl/algemene-voorwaarden/ 301
