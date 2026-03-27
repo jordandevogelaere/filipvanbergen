@@ -82,40 +82,29 @@ export default async function HomePage({
 
           {/* Filip van Bergen - featured hero card */}
           <div className="bg-navy-800 mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-xl">
-            <div className="grid md:grid-cols-5">
-              <div className="md:col-span-2">
+            <div className="p-8 md:p-10">
+              <div className="flex items-start gap-6">
                 <img
                   src="/images/profile-filip.jpg"
                   alt="Filip van Bergen"
-                  width={1200}
-                  height={773}
-                  className="h-full w-full object-cover"
+                  width={150}
+                  height={150}
+                  className="h-24 w-24 flex-shrink-0 rounded-full object-cover"
                 />
-              </div>
-              <div className="p-8 text-white md:col-span-3 md:p-10">
-                <h3 className="font-heading text-3xl font-bold tracking-wide">
-                  Filip van Bergen
-                </h3>
-                <p className="mt-1 text-sm font-light uppercase tracking-[0.2em] text-white/60">
-                  {t.whoIsWho.filip.role}
-                </p>
-                <div className="bg-accent mt-4 h-0.5 w-12" />
-                <p className="mt-5 leading-relaxed text-white/80">
-                  {t.whoIsWho.filip.bio}
-                </p>
-                <div className="mt-6 grid gap-x-6 gap-y-2 text-sm text-white/70 sm:grid-cols-2">
-                  {t.whoIsWho.filip.credentials.map((c) => (
-                    <p key={c}>
-                      <span className="text-accent mr-1.5 inline-block">
-                        &#8250;
-                      </span>
-                      {c}
-                    </p>
-                  ))}
+                <div className="flex-1">
+                  <h3 className="font-heading text-3xl font-bold tracking-wide text-white">
+                    Filip van Bergen
+                  </h3>
+                  <p className="mt-1 text-sm font-light uppercase tracking-[0.2em] text-white/60">
+                    {t.whoIsWho.filip.role}
+                  </p>
                 </div>
-                <p className="mt-6 text-sm font-medium tracking-wide text-white/50">
-                  {t.whoIsWho.filip.languages}
-                </p>
+              </div>
+              <div className="bg-accent mt-4 h-0.5 w-12" />
+              <div className="mt-5 space-y-4 leading-relaxed text-white/80">
+                {t.whoIsWho.filip.fullText.map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
               </div>
             </div>
           </div>
