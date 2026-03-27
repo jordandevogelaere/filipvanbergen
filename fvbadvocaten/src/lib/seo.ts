@@ -100,6 +100,9 @@ export function buildJsonLd(locale: Locale) {
               "Criminal Law",
               "Transport Law",
               "Insurance Law",
+              "Administrative Law",
+              "Real Estate",
+              "Condominium Law",
               "Debt Collection",
               "Leasing Companies",
             ]
@@ -115,6 +118,9 @@ export function buildJsonLd(locale: Locale) {
                 "Droit pénal",
                 "Droit des transports",
                 "Droit des assurances",
+                "Droit administratif",
+                "Immobilier",
+                "Copropriété",
                 "Recouvrement",
                 "Sociétés de leasing",
               ]
@@ -129,6 +135,9 @@ export function buildJsonLd(locale: Locale) {
                 "Strafrecht",
                 "Transportrecht",
                 "Verzekeringsrecht",
+                "Administratief recht",
+                "Onroerend goed",
+                "Appartementsrecht",
                 "Incasso",
                 "Leasingmaatschappijen",
               ]
