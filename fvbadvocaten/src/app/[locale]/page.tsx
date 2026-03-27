@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import PracticeAreaCard from "@/components/PracticeAreaCard";
+import PracticeAreaGrid from "@/components/PracticeAreaGrid";
 import ContactForm from "@/components/ContactForm";
 import { CONTACT } from "@/lib/constants";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
@@ -60,11 +61,7 @@ export default async function HomePage({
       <section id="praktijkgebieden" className="bg-steel-100 py-20">
         <Container>
           <SectionHeading>{t.practiceAreas.title}</SectionHeading>
-          <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {t.practiceAreas.areas.slice(0, -2).map((area) => (
-              <PracticeAreaCard key={area.title} {...area} />
-            ))}
-          </div>
+          <PracticeAreaGrid areas={t.practiceAreas.areas.slice(0, -2)} />
 
           {/* Incasso & Leasing – featured blocks */}
           <div className="mt-16 grid gap-8 md:grid-cols-2">

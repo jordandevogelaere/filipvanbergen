@@ -11,9 +11,12 @@ import {
   ShieldCheck,
   Banknote,
   FileText,
+  Landmark,
+  MapPin,
+  Building,
 } from "lucide-react";
 
-const iconMap: Record<string, React.ElementType> = {
+export const iconMap: Record<string, React.ElementType> = {
   Shield,
   Briefcase,
   Building2,
@@ -26,20 +29,26 @@ const iconMap: Record<string, React.ElementType> = {
   ShieldCheck,
   Banknote,
   FileText,
+  Landmark,
+  MapPin,
+  Building,
 };
 
 export default function PracticeAreaCard({
   title,
   icon,
   description,
+  details,
   variant = "icon",
 }: {
   title: string;
   icon: string;
   description: string;
+  details?: string[];
   variant?: "icon" | "block";
 }) {
   const Icon = iconMap[icon] || Shield;
+  const hasDetails = details && details.length > 0;
 
   if (variant === "block") {
     return (
@@ -58,14 +67,20 @@ export default function PracticeAreaCard({
   }
 
   return (
-    <div className="group text-center">
-      <div className="bg-navy-700 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl transition group-hover:bg-navy-600">
-        <Icon className="h-7 w-7 text-white" />
+    <div
+      className={`group flex w-full flex-col items-center rounded-xl bg-white p-6 shadow-sm transition-all ${hasDetails ? "cursor-pointer hover:shadow-md" : ""}`}
+    >
+      <div className="flex flex-1 flex-col items-center text-center">
+        <div className="bg-navy-700 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl transition group-hover:bg-navy-600">
+          <Icon className="h-7 w-7 text-white" />
+        </div>
+        <h3 className="text-navy-800 text-sm font-bold uppercase tracking-wide">
+          {title}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-gray-600">
+          {description}
+        </p>
       </div>
-      <h3 className="text-navy-800 mb-2 text-sm font-bold uppercase tracking-wide">
-        {title}
-      </h3>
-      <p className="text-sm leading-relaxed text-gray-600">{description}</p>
     </div>
   );
 }
