@@ -1,5 +1,5 @@
 interface Env {
-  UNOSEND_API_KEY: string;
+  RESEND_API_KEY: string;
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -31,22 +31,22 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       <p style="color:#888;font-size:12px;">Verzonden via het contactformulier op fvbarbitration.com op ${new Date().toISOString()}</p>
     `;
 
-    const res = await fetch("https://api.unosend.co/emails", {
+    const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${context.env.UNOSEND_API_KEY}`,
+        Authorization: `Bearer ${context.env.RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "website@fvbarbitration.com",
+        from: "website@fvbadvocaten.com",
         to: ["vanbergen@fvbarbitration.com"],
-        subject: `Contactformulier: ${voornaam} ${achternaam}`,
+        subject: `[fvbarbitration.com] Contactformulier: ${voornaam} ${achternaam}`,
         html: htmlBody,
       }),
     });
 
     if (!res.ok) {
-      console.error("Unosend error:", res.status, await res.text());
+      console.error("Resend error:", res.status, await res.text());
       return new Response(
         JSON.stringify({ error: "Er ging iets mis bij het verzenden." }),
         { status: 502, headers: { "Content-Type": "application/json" } }
