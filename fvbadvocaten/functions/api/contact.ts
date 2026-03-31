@@ -46,9 +46,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     });
 
     if (!res.ok) {
-      console.error("Resend error:", res.status, await res.text());
+      const resendError = await res.text();
+      console.error("Resend error:", res.status, resendError);
       return new Response(
-        JSON.stringify({ error: "Er ging iets mis bij het verzenden." }),
+        JSON.stringify({ error: "Er ging iets mis bij het verzenden.", debug: resendError }),
         { status: 502, headers: { "Content-Type": "application/json" } }
       );
     }
