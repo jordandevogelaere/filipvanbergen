@@ -8,7 +8,7 @@ export default function Footer({ locale }: { locale: Locale }) {
   return (
     <footer className="bg-tan-900 text-white/70">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-4">
           <div>
             <h3 className="mb-3 text-lg font-bold text-white">{SITE_NAME}</h3>
             <p className="text-sm leading-relaxed">
@@ -31,6 +31,25 @@ export default function Footer({ locale }: { locale: Locale }) {
               <a href={`mailto:${CONTACT.email}`} className="hover:text-white">
                 {CONTACT.email}
               </a>
+            </p>
+          </div>
+          <div>
+            <h3 className="mb-3 text-lg font-bold text-white">
+              {t.footer.accounts}
+            </h3>
+            <p className="text-sm leading-relaxed">
+              {t.footer.officeAccount}:
+              <br />
+              IBAN BE08 6451 0409 8213
+              <br />
+              (Bank J. Van Breda &amp; C°)
+              <br />
+              <br />
+              {t.footer.thirdPartyAccount}:
+              <br />
+              IBAN BE43 6304 0052 6601
+              <br />
+              (ING)
             </p>
           </div>
           <div>

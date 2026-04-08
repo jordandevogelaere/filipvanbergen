@@ -64,6 +64,9 @@ function nl() {
       terms: "Algemene Voorwaarden",
       privacy: "Privacybeleid",
       rights: "Alle rechten voorbehouden.",
+      accounts: "Rekeningen",
+      officeAccount: "Kantoorrekening",
+      thirdPartyAccount: "Derdenrekening",
     },
     seo: {
       home: {
@@ -130,6 +133,9 @@ function en() {
       terms: "Terms & Conditions",
       privacy: "Privacy Policy",
       rights: "All rights reserved.",
+      accounts: "Bank Accounts",
+      officeAccount: "Office Account",
+      thirdPartyAccount: "Third-Party Account",
     },
     seo: {
       home: {
@@ -196,6 +202,9 @@ function fr() {
       terms: "Conditions générales",
       privacy: "Politique de confidentialité",
       rights: "Tous droits réservés.",
+      accounts: "Comptes bancaires",
+      officeAccount: "Compte du cabinet",
+      thirdPartyAccount: "Compte de tiers",
     },
     seo: {
       home: {
