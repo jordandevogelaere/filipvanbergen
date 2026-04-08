@@ -228,10 +228,22 @@ export default async function HomePage({
         />
       </section>
 
-      {/* Contact section on home */}
-      <section id="contact" className="py-20">
+      {/* Vacatures */}
+      <section id="contact" className="bg-navy-800 py-20 text-white">
         <Container>
-          <SectionHeading>{t.contact.title}</SectionHeading>
+          <SectionHeading light>{t.vacatures.title}</SectionHeading>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-lg leading-relaxed text-white/80">
+              {t.vacatures.description}
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Contact */}
+      <section className="py-20">
+        <Container>
+          <SectionHeading>{t.vacatures.cta}</SectionHeading>
           <div className="mx-auto max-w-2xl">
             <div className="mb-8 text-center text-gray-600">
               <p>

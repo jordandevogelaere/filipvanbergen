@@ -148,6 +148,11 @@ function nl() {
         bio: "Kaylee staat het team op administratief en organisatorisch vlak bij. Door haar accuratesse en stiptheid is zij een absolute meerwaarde voor het kantoor.",
       },
     },
+    vacatures: {
+      title: "Vacatures",
+      description: "ADVOCATENKANTOOR FILIP van BERGEN is omwille van de expansie van het kantoor steeds op zoek naar hoog gekwalificeerde en gemotiveerde medewerkers, die bereid zijn voor de klanten van het kantoor het grootst mogelijke engagement aan te gaan bij het adviseren en het verlenen van gerechtelijke bijstand.",
+      cta: "Solliciteren?",
+    },
     contact: {
       title: "Contact",
       sendMessage: "Stuur ons een bericht",
@@ -332,6 +337,11 @@ function en() {
         bio: "Kaylee supports the team in administrative and organisational matters. Through her accuracy and punctuality she is an absolute asset to the firm.",
       },
     },
+    vacatures: {
+      title: "Careers",
+      description: "As a result of the firm's expansion, ADVOCATENKANTOOR FILIP van BERGEN is constantly on the look-out for highly qualified and motivated employees, who are prepared to go the extra mile when providing advice and legal assistance.",
+      cta: "Apply?",
+    },
     contact: {
       title: "Contact",
       sendMessage: "Send us a message",
@@ -515,6 +525,11 @@ function fr() {
         role: "Administration & Office Manager",
         bio: "Kaylee soutient l'équipe sur le plan administratif et organisationnel. Par sa précision et sa ponctualité, elle est un atout absolu pour le cabinet.",
       },
+    },
+    vacatures: {
+      title: "Offres d'emploi",
+      description: "En raison de son expansion, le CABINET D'AVOCATS FILIP van BERGEN est constamment à la recherche de collaborateurs hautement qualifiés et motivés, prêts à s'engager à fond pour les clients du cabinet en leur apportant conseils et assistance juridique.",
+      cta: "Sollicitez?",
     },
     contact: {
       title: "Contact",
