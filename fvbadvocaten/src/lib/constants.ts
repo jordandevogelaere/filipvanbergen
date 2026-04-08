@@ -69,12 +69,6 @@ export const PRACTICE_AREAS = [
       "Verdediging in strafzaken, bijstand bij verhoor, slachtofferbijstand.",
   },
   {
-    title: "Transportrecht",
-    icon: "Truck",
-    description:
-      "Juridisch advies bij transportgeschillen, CMR-vervoer, maritiem recht en logistiek.",
-  },
-  {
     title: "Verzekeringsrecht",
     icon: "ShieldCheck",
     description:
