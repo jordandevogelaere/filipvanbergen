@@ -45,7 +45,7 @@ export default async function AlgemeneVoorwaardenPage({
         )}
 
         <div className="prose prose-gray mx-auto max-w-3xl">
-          <ul>
+          <ol>
             <li>
               ADVOCATENKANTOOR FILIP VAN BERGEN is de handelsbenaming van de BV
               Advocatuur Bemiddeling &amp; Arbitrage Filip van Bergen, waarvan de
@@ -146,7 +146,7 @@ export default async function AlgemeneVoorwaardenPage({
               betwistingen ressorteren enkel onder de bevoegdheid van de
               Antwerpse rechtbanken, afdeling Antwerpen.
             </li>
-          </ul>
+          </ol>
         </div>
       </Container>
     </section>
