@@ -78,7 +78,6 @@ function nl() {
           "U wordt gedagvaard voor de Politierechtbank wegens een verkeersinbreuk?",
           "U wenst een schadevergoeding te bekomen omdat u schade heeft geleden ten gevolge van een verkeerd verkeersmanoeuvre?",
         ] },
-        { title: "Transportrecht", icon: "Truck", description: "Juridisch advies bij transportgeschillen, CMR-vervoer, maritiem recht en logistiek." },
         { title: "Verzekeringsrecht", icon: "ShieldCheck", description: "Advies bij verzekeringsgeschillen, polisinterpretatie en schadeclaims.", details: [
           "Uw verzekeringsmaatschappij volgt u niet en wenst een second opinion over de slaagkansen van een gerechtelijke procedure?",
           "U heeft een lichamelijk letsel en u wenst de schade te begroten en een correcte schadevergoeding te bekomen?",
@@ -270,7 +269,6 @@ function en() {
           "Are you being summoned before the Police Court for a traffic offence?",
           "Do you wish to obtain compensation because you suffered damage as a result of a wrong traffic manoeuvre?",
         ] },
-        { title: "Transport Law", icon: "Truck", description: "Legal advice on transport disputes, CMR carriage, maritime law and logistics." },
         { title: "Insurance Law", icon: "ShieldCheck", description: "Advice on insurance disputes, policy interpretation and damage claims.", details: [
           "Your insurance company does not follow you and you want a second opinion on the chances of success of legal proceedings?",
           "Have you suffered a bodily injury and do you wish to assess the damage and obtain fair compensation?",
@@ -462,7 +460,6 @@ function fr() {
           "Êtes-vous cité devant le Tribunal de Police pour une infraction routière ?",
           "Souhaitez-vous obtenir une indemnisation pour des dommages subis suite à une manœuvre de circulation incorrecte ?",
         ] },
-        { title: "Droit des transports", icon: "Truck", description: "Conseil juridique en matière de litiges de transport, transport CMR, droit maritime et logistique." },
         { title: "Droit des assurances", icon: "ShieldCheck", description: "Conseil en matière de litiges d'assurance, interprétation de polices et réclamations de dommages.", details: [
           "Votre compagnie d'assurance ne vous suit pas et vous souhaitez un second avis sur les chances de succès d'une procédure judiciaire ?",
           "Avez-vous subi un dommage corporel et souhaitez-vous évaluer le préjudice et obtenir une indemnisation correcte ?",
