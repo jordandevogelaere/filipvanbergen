@@ -42,7 +42,7 @@ export default async function AlgemeneVoorwaardenPage({
           </div>
         )}
         <div className="prose prose-gray mx-auto max-w-3xl">
-          <ul>
+          <ol>
             <li>
               &ldquo;ARBITRAGE FILIP VAN BERGEN&rdquo; en &ldquo;FVB
               ARBITRATION&rdquo; zijn handelsbenamingen van de BV Advocatuur
@@ -99,7 +99,7 @@ export default async function AlgemeneVoorwaardenPage({
               toepassing. Eventuele betwistingen ressorteren enkel onder de
               bevoegdheid van de Antwerpse rechtbanken, afdeling Antwerpen.
             </li>
-          </ul>
+          </ol>
         </div>
       </Container>
     </section>
