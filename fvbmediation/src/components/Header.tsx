@@ -13,6 +13,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
   const navLinks = [
     { href: `/${locale}/`, label: t.nav.home },
+    { href: `/${locale}/blog/`, label: t.nav.blog },
     { href: `/${locale}/algemene-voorwaarden/`, label: t.nav.terms },
     { href: `/${locale}/privacybeleid/`, label: t.nav.privacy },
   ];

@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ContactForm from "@/components/ContactForm";
+import LatestPosts from "@/components/LatestPosts";
 import { CONTACT } from "@/lib/constants";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
 import { buildAlternates, buildOpenGraph } from "@/lib/seo";
@@ -78,6 +79,13 @@ export default async function HomePage({
               <p className="text-sm leading-relaxed text-white/80">{t.specialties.commercial.description}</p>
             </div>
           </div>
+        </Container>
+      </section>
+
+      {/* Latest Blog Posts */}
+      <section className="py-20">
+        <Container>
+          <LatestPosts locale={loc} />
         </Container>
       </section>
 

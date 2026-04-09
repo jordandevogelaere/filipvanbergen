@@ -15,6 +15,7 @@ export default function Header({ locale }: { locale: Locale }) {
     { href: `/${locale}/`, label: t.nav.home },
     { href: `/${locale}/#praktijkgebieden`, label: t.nav.practiceAreas },
     { href: `/${locale}/#wie-is-wie`, label: t.nav.whoIsWho },
+    { href: `/${locale}/blog/`, label: t.nav.blog },
     { href: `/${locale}/contact/`, label: t.nav.contact },
   ];
 
