@@ -1,0 +1,8 @@
+name = "fvb-blog-api"
+main = "src/index.ts"
+compatibility_date = "2025-03-15"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fvbadvocaten"
+database_id = "311c0cc5-40c3-4cb5-8542-6bc8bb3e83a3"

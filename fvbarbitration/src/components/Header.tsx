@@ -2,17 +2,31 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { getDictionary, type Locale } from "@/lib/i18n";
 
+const BLOG_API_URL =
+  process.env.NEXT_PUBLIC_BLOG_API_URL || "https://fvb-blog-api.workers.dev";
+
 export default function Header({ locale }: { locale: Locale }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [blogVisible, setBlogVisible] = useState(false);
   const t = getDictionary(locale);
+
+  useEffect(() => {
+    fetch(`${BLOG_API_URL}/settings?site=fvbarbitration`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.blog_menu_visible) setBlogVisible(true);
+      })
+      .catch(() => {});
+  }, []);
 
   const navLinks = [
     { href: `/${locale}/`, label: t.nav.home },
+    ...(blogVisible ? [{ href: `/${locale}/blog/`, label: t.nav.blog }] : []),
     { href: `/${locale}/algemene-voorwaarden/`, label: t.nav.terms },
     { href: `/${locale}/privacybeleid/`, label: t.nav.privacy },
   ];

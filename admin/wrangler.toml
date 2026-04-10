@@ -1,0 +1,18 @@
+name = "fvb-admin"
+compatibility_date = "2025-03-15"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fvbadvocaten"
+database_id = "311c0cc5-40c3-4cb5-8542-6bc8bb3e83a3"
+
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "fvbadvocaten"
+
+[vars]
+GITHUB_REPO = "filipvanbergen/karachi"
+R2_PUBLIC_URL = "https://cdn.fvbadvocaten.be"
+
+# Secrets (set via: wrangler secret put <NAME>):
+# GITHUB_TOKEN - Fine-grained PAT for triggering workflow_dispatch

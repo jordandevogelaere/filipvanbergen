@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-navy-900: #0f1a24;
+  --color-navy-800: #1a2632;
+  --color-navy-700: #2c3e50;
+  --color-navy-600: #34495e;
+  --color-navy-500: #4a6278;
+  --color-steel-100: #edf0f3;
+  --color-steel-200: #d5dbe0;
+  --color-steel-300: #b8c2cc;
+  --color-accent: #3498db;
+  --font-heading: "Inter", Arial, Helvetica, sans-serif;
+  --font-body: "Inter", Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-steel-100);
+  color: #333333;
+  font-family: var(--font-body);
+}

@@ -23,6 +23,7 @@ function nl() {
   return {
     nav: {
       home: "Home",
+      blog: "Blog",
       terms: "Algemene Voorwaarden",
       privacy: "Privacybeleid",
     },
@@ -93,6 +94,7 @@ function en() {
   return {
     nav: {
       home: "Home",
+      blog: "Blog",
       terms: "Terms & Conditions",
       privacy: "Privacy Policy",
     },
@@ -163,6 +165,7 @@ function fr() {
   return {
     nav: {
       home: "Accueil",
+      blog: "Blog",
       terms: "Conditions générales",
       privacy: "Politique de confidentialité",
     },

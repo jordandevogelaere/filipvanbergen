@@ -16,6 +16,7 @@ export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/#praktijkgebieden", label: "Praktijkgebieden" },
   { href: "/#wie-is-wie", label: "Wie is wie" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 

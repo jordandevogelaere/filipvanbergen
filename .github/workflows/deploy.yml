@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  repository_dispatch:
+    types: [blog_publish]
 
 jobs:
   detect-changes:
@@ -12,6 +14,8 @@ jobs:
       advocaten: ${{ steps.changes.outputs.advocaten }}
       mediation: ${{ steps.changes.outputs.mediation }}
       arbitration: ${{ steps.changes.outputs.arbitration }}
+      admin: ${{ steps.changes.outputs.admin }}
+      blog-api: ${{ steps.changes.outputs.blog-api }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,6 +23,16 @@ jobs:
 
       - id: changes
         run: |
+          # For repository_dispatch (blog publish), deploy only the requested sites
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "advocaten=${{ github.event.client_payload.deploy_advocaten || 'false' }}" >> "$GITHUB_OUTPUT"
+            echo "mediation=${{ github.event.client_payload.deploy_mediation || 'false' }}" >> "$GITHUB_OUTPUT"
+            echo "arbitration=${{ github.event.client_payload.deploy_arbitration || 'false' }}" >> "$GITHUB_OUTPUT"
+            echo "admin=false" >> "$GITHUB_OUTPUT"
+            echo "blog-api=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           BASE=${{ github.event.before }}
           # Fall back to HEAD~1 if before is all zeros (first push)
           if [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
@@ -29,11 +43,15 @@ jobs:
             echo "advocaten=true" >> "$GITHUB_OUTPUT"
             echo "mediation=true" >> "$GITHUB_OUTPUT"
             echo "arbitration=true" >> "$GITHUB_OUTPUT"
+            echo "admin=true" >> "$GITHUB_OUTPUT"
+            echo "blog-api=true" >> "$GITHUB_OUTPUT"
           else
             CHANGED=$(git diff --name-only "$BASE" HEAD)
             echo "advocaten=$(echo "$CHANGED" | grep -q '^fvbadvocaten/' && echo true || echo false)" >> "$GITHUB_OUTPUT"
             echo "mediation=$(echo "$CHANGED" | grep -q '^fvbmediation/' && echo true || echo false)" >> "$GITHUB_OUTPUT"
             echo "arbitration=$(echo "$CHANGED" | grep -q '^fvbarbitration/' && echo true || echo false)" >> "$GITHUB_OUTPUT"
+            echo "admin=$(echo "$CHANGED" | grep -q '^admin/' && echo true || echo false)" >> "$GITHUB_OUTPUT"
+            echo "blog-api=$(echo "$CHANGED" | grep -q '^blog-api/' && echo true || echo false)" >> "$GITHUB_OUTPUT"
           fi
 
   deploy-advocaten:
@@ -54,6 +72,9 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+        env:
+          BLOG_API_URL: ${{ secrets.BLOG_API_URL }}
+          STATIC_EXPORT: "1"
 
       - uses: cloudflare/wrangler-action@v3
         with:
@@ -80,6 +101,9 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+        env:
+          BLOG_API_URL: ${{ secrets.BLOG_API_URL }}
+          STATIC_EXPORT: "1"
 
       - uses: cloudflare/wrangler-action@v3
         with:
@@ -106,6 +130,9 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+        env:
+          BLOG_API_URL: ${{ secrets.BLOG_API_URL }}
+          STATIC_EXPORT: "1"
 
       - uses: cloudflare/wrangler-action@v3
         with:
@@ -113,3 +140,54 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy out --project-name=fvbarbitration
           workingDirectory: fvbarbitration
+
+  deploy-blog-api:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.blog-api == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: blog-api
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: blog-api/package-lock.json
+
+      - run: npm ci
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+          workingDirectory: blog-api
+
+  deploy-admin:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.admin == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: admin
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: admin/package-lock.json
+
+      - run: npm ci
+      - run: npx opennextjs-cloudflare
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy .open-next/assets --project-name=fvb-admin
+          workingDirectory: admin
