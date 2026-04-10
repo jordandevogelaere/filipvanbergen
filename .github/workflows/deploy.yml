@@ -183,11 +183,11 @@ jobs:
           cache-dependency-path: admin/package-lock.json
 
       - run: npm ci
-      - run: npx opennextjs-cloudflare
+      - run: npx opennextjs-cloudflare build
 
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy .open-next/assets --project-name=fvb-admin
+          command: deploy
           workingDirectory: admin
