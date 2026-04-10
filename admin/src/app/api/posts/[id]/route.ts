@@ -157,16 +157,21 @@ export async function PUT(
     }
 
     // Trigger deploy if publishing
+    let deployStatus: string | null = null;
     if (publish) {
-      try {
-        const githubToken = env.GITHUB_TOKEN;
-        const githubRepo = env.GITHUB_REPO || "filipvanbergen/karachi";
-        if (githubToken) {
-          await fetch(`https://api.github.com/repos/${githubRepo}/dispatches`, {
+      const githubToken = env.GITHUB_TOKEN;
+      const githubRepo = env.GITHUB_REPO;
+      if (!githubToken) {
+        deployStatus = "error: GITHUB_TOKEN not set";
+      } else if (!githubRepo) {
+        deployStatus = "error: GITHUB_REPO not set";
+      } else {
+        try {
+          const ghRes = await fetch(`https://api.github.com/repos/${githubRepo}/dispatches`, {
             method: "POST",
             headers: {
               Authorization: `Bearer ${githubToken}`,
-              Accept: "application/vnd.github.v3+json",
+              Accept: "application/vnd.github+json",
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -179,13 +184,19 @@ export async function PUT(
               },
             }),
           });
+          if (ghRes.ok) {
+            deployStatus = "triggered";
+          } else {
+            const text = await ghRes.text();
+            deployStatus = `error: ${ghRes.status} ${text}`;
+          }
+        } catch (deployErr) {
+          deployStatus = `error: ${deployErr}`;
         }
-      } catch (deployErr) {
-        console.error("Deploy trigger failed:", deployErr);
       }
     }
 
-    return NextResponse.json({ id, slug, status });
+    return NextResponse.json({ id, slug, status, deployStatus });
   } catch (e) {
     console.error("PUT /api/posts/[id] error:", e);
     const msg = e instanceof Error ? e.message : "Failed to update post";
