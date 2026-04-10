@@ -7,6 +7,7 @@ import type { Locale } from "@/lib/types";
 
 interface PostData {
   slug: string;
+  status: string;
   featured_image_url: string;
   sites: string[];
   categories: string[];
@@ -32,6 +33,7 @@ export default function EditPostPage() {
       .then((post) => {
         setData({
           slug: post.slug,
+          status: post.status,
           featured_image_url: post.featured_image_url || "",
           sites: post.sites,
           categories: post.categories,

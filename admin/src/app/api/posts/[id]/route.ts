@@ -99,7 +99,8 @@ export async function PUT(
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
 
-    const status = publish ? "published" : existing.status;
+    const status = publish ? "published" : "draft";
+    const wasPublished = existing.status === "published";
     const publishedAt = publish ? new Date().toISOString() : undefined;
 
     // Update post
@@ -156,9 +157,9 @@ export async function PUT(
         .run();
     }
 
-    // Trigger deploy if publishing
+    // Trigger deploy if publishing or unpublishing
     let deployStatus: string | null = null;
-    if (publish) {
+    if (publish || wasPublished) {
       const githubToken = env.GITHUB_TOKEN;
       const githubRepo = env.GITHUB_REPO;
       if (!githubToken) {

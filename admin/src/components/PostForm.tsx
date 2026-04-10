@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import { Save, Eye, Globe, Send, Upload, X } from "lucide-react";
+import { Save, Eye, EyeOff, Globe, Send, Upload, X } from "lucide-react";
 import { LOCALES, SITES, type Locale } from "@/lib/types";
 import SocialShareButtons from "./SocialShareButtons";
 
@@ -14,6 +14,7 @@ interface PostFormProps {
   postId?: string;
   initialData?: {
     slug: string;
+    status: string;
     featured_image_url: string;
     sites: string[];
     categories: string[];
@@ -52,6 +53,7 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
       fr: { title: "", content_json: "", content_html: "", meta_description: "" },
     }
   );
+  const [isPublished, setIsPublished] = useState(initialData?.status === "published");
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -119,8 +121,10 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
       }
 
       if (publish) {
+        setIsPublished(true);
         setShowShareButtons(true);
       } else {
+        setIsPublished(false);
         router.push("/posts");
       }
     } catch {
@@ -359,19 +363,31 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
 
           {/* Actions */}
           <div className="bg-white rounded-xl shadow-sm border border-steel-200 p-6 space-y-3">
-            <button
-              type="button"
-              onClick={() => handleSave(false)}
-              disabled={saving}
-              className="w-full flex items-center justify-center gap-2 border border-steel-200 text-navy-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-steel-100 transition-colors disabled:opacity-50"
-            >
-              <Save className="w-4 h-4" />
-              {saving ? "Saving..." : "Save Draft"}
-            </button>
+            {isPublished ? (
+              <button
+                type="button"
+                onClick={() => handleSave(false)}
+                disabled={saving}
+                className="w-full flex items-center justify-center gap-2 border border-steel-200 text-navy-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-steel-100 transition-colors disabled:opacity-50"
+              >
+                <EyeOff className="w-4 h-4" />
+                {saving ? "Unpublishing..." : "Unpublish"}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => handleSave(false)}
+                disabled={saving}
+                className="w-full flex items-center justify-center gap-2 border border-steel-200 text-navy-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-steel-100 transition-colors disabled:opacity-50"
+              >
+                <Save className="w-4 h-4" />
+                {saving ? "Saving..." : "Save Draft"}
+              </button>
+            )}
             <button
               type="button"
               onClick={() => handleSave(true)}
-              disabled={publishing}
+              disabled={publishing || isPublished}
               className="w-full flex items-center justify-center gap-2 bg-accent text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
