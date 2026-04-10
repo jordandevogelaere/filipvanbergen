@@ -173,6 +173,7 @@ export async function PUT(
               Authorization: `Bearer ${githubToken}`,
               Accept: "application/vnd.github+json",
               "Content-Type": "application/json",
+              "User-Agent": "fvb-admin",
             },
             body: JSON.stringify({
               event_type: "blog_publish",
