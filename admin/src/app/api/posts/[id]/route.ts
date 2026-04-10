@@ -101,7 +101,7 @@ export async function PUT(
 
     const status = publish ? "published" : "draft";
     const wasPublished = existing.status === "published";
-    const publishedAt = publish ? new Date().toISOString() : undefined;
+    const publishedAt = publish && !wasPublished ? new Date().toISOString() : undefined;
 
     // Update post
     if (publishedAt) {

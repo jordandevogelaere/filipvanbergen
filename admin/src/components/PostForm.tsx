@@ -387,11 +387,11 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
             <button
               type="button"
               onClick={() => handleSave(true)}
-              disabled={publishing || isPublished}
+              disabled={publishing}
               className="w-full flex items-center justify-center gap-2 bg-accent text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
-              {publishing ? "Publishing..." : "Publish"}
+              {publishing ? "Publishing..." : isPublished ? "Update" : "Publish"}
             </button>
           </div>
         </div>
