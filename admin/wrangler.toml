@@ -17,7 +17,7 @@ binding = "IMAGES"
 bucket_name = "fvbadvocaten"
 
 [vars]
-GITHUB_REPO = "filipvanbergen/karachi"
+GITHUB_REPO = "jordandevogelaere/filipvanbergen"
 R2_PUBLIC_URL = "https://cdn.fvbadvocaten.be"
 
 # Secrets (set via: wrangler secret put <NAME>):
