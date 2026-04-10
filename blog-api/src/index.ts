@@ -24,6 +24,23 @@ app.use(
   })
 );
 
+// Settings endpoint
+app.get("/settings", async (c) => {
+  const site = c.req.query("site");
+  if (!site) {
+    return c.json({ error: "site parameter is required" }, 400);
+  }
+  const row = await c.env.DB.prepare(
+    "SELECT blog_menu_visible FROM site_settings WHERE site = ?1"
+  )
+    .bind(site)
+    .first<{ blog_menu_visible: number }>();
+
+  return c.json({
+    blog_menu_visible: row ? row.blog_menu_visible === 1 : false,
+  });
+});
+
 // Routes
 app.route("/posts", posts);
 app.route("/categories", categories);

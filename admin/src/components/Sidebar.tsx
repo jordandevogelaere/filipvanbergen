@@ -8,6 +8,7 @@ import {
   FolderOpen,
   Tags,
   Share2,
+  Settings,
 } from "lucide-react";
 
 const navItems = [
@@ -16,6 +17,7 @@ const navItems = [
   { href: "/categories", label: "Categories", icon: FolderOpen },
   { href: "/tags", label: "Tags", icon: Tags },
   { href: "/social", label: "Social Media", icon: Share2 },
+  { href: "/settings", label: "Settings", icon: Settings },
 ];
 
 export default function Sidebar({ email }: { email: string }) {
