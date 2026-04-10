@@ -133,27 +133,6 @@ export default async function HomePage({
                   </p>
                 </div>
               </div>
-
-              {/* Alec Reijntjes */}
-              <div className="border-navy-700 flex gap-5 rounded-xl border-l-4 bg-white p-6 shadow-sm">
-                <div className="bg-navy-800 flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-bold text-white">
-                  AR
-                </div>
-                <div>
-                  <h3 className="font-heading text-navy-800 text-lg font-bold">
-                    Alec Reijntjes
-                  </h3>
-                  <p className="text-navy-500 text-xs font-medium uppercase tracking-wider">
-                    {t.whoIsWho.alec.role}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                    {t.whoIsWho.alec.bio1}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                    {t.whoIsWho.alec.bio2}
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -163,23 +142,6 @@ export default async function HomePage({
               {t.whoIsWho.team}
             </h4>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="border-steel-300 flex gap-4 rounded-xl border-l-4 bg-white p-6 shadow-sm">
-                <div className="bg-navy-700 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
-                  ND
-                </div>
-                <div>
-                  <h3 className="font-heading text-navy-800 font-bold">
-                    Niels Decrock
-                  </h3>
-                  <p className="text-navy-500 text-xs font-medium uppercase tracking-wider">
-                    {t.whoIsWho.niels.role}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                    {t.whoIsWho.niels.bio}
-                  </p>
-                </div>
-              </div>
-
               <div className="border-steel-300 flex gap-4 rounded-xl border-l-4 bg-white p-6 shadow-sm">
                 <div className="bg-navy-700 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
                   XB

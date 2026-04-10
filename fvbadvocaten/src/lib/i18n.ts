@@ -130,15 +130,6 @@ function nl() {
         bio: "Jonas behaalde zijn Master in de Rechten aan de Universiteit Antwerpen, waarna hij toetrad tot het team van Filip van Bergen. Hij behandelt nationale en internationale geschillen en is een begenadigd litigator.",
         languages: "Nederlands · Frans · Engels · Duits",
       },
-      alec: {
-        role: "Advocate",
-        bio1: "Alec is een getalenteerde en gepassioneerde advocate, die haar Master in de Rechten behaalde aan de Vrije Universiteit Brussel. Zij promoveerde met de Masterthesis over de informatie- en bevorderingsverplichting van de advocaat inzake minnelijke conflictoplossing.",
-        bio2: "Tijdens haar studies deed zij reeds rechtbankervaring op bij de Griffier van de Rechtbank van Eerste Aanleg en volgde zij aanvullende universitaire cursussen in de Handelswetenschappen.",
-      },
-      niels: {
-        role: "Legal Assistant & Office Manager",
-        bio: "Niels behaalde zijn Bachelor in de rechtsgeleerdheid aan de Universiteit Antwerpen. Hij is een uitstekende kantoormanager en verleent zowel accurate administratieve als juridische bijstand.",
-      },
       xander: {
         role: "Legal Assistant",
         bio: "Xander behaalde zijn Bachelor in de rechtsgeleerdheid aan de Universiteit Antwerpen. Hij is gepassioneerd in grondig juridisch onderzoek en assisteert op administratief en juridisch vlak.",
@@ -322,15 +313,6 @@ function en() {
         bio: "Jonas obtained his Master of Laws at the University of Antwerp, after which he joined the team of Filip van Bergen. He handles national and international disputes and is a talented litigator.",
         languages: "Dutch · French · English · German",
       },
-      alec: {
-        role: "Lawyer",
-        bio1: "Alec is a talented and passionate lawyer who obtained her Master of Laws at the Vrije Universiteit Brussel. She graduated with a Master's thesis on the information and promotion obligation of the lawyer in amicable conflict resolution.",
-        bio2: "During her studies she gained court experience by assisting the Clerk of the Court of First Instance and took additional university courses in Business Sciences.",
-      },
-      niels: {
-        role: "Legal Assistant & Office Manager",
-        bio: "Niels obtained his Bachelor of Law at the University of Antwerp. He is an excellent office manager providing both accurate administrative and legal assistance.",
-      },
       xander: {
         role: "Legal Assistant",
         bio: "Xander obtained his Bachelor of Law at the University of Antwerp. He is passionate about thorough legal research and assists on both administrative and legal matters.",
@@ -513,15 +495,6 @@ function fr() {
         role: "Avocat",
         bio: "Jonas a obtenu son Master en Droit à l'Université d'Anvers, après quoi il a rejoint l'équipe de Filip van Bergen. Il traite des litiges nationaux et internationaux et est un plaideur talentueux.",
         languages: "Néerlandais · Français · Anglais · Allemand",
-      },
-      alec: {
-        role: "Avocate",
-        bio1: "Alec est une avocate talentueuse et passionnée qui a obtenu son Master en Droit à la Vrije Universiteit Brussel. Elle a défendu sa thèse de master sur l'obligation d'information et de promotion de l'avocat en matière de résolution amiable des conflits.",
-        bio2: "Pendant ses études, elle a acquis une expérience juridique auprès du Greffier du Tribunal de Première Instance et a suivi des cours universitaires complémentaires en Sciences Commerciales.",
-      },
-      niels: {
-        role: "Assistant juridique & Office Manager",
-        bio: "Niels a obtenu son Bachelor en Droit à l'Université d'Anvers. Il est un excellent gestionnaire de bureau fournissant une assistance administrative et juridique précise.",
       },
       xander: {
         role: "Assistant juridique",
