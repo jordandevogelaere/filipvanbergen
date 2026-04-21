@@ -149,6 +149,13 @@ export async function PUT(
       }
     }
 
+    // Read current site assignments before replacing them
+    const oldSitesResult = await db
+      .prepare("SELECT site FROM post_sites WHERE post_id = ?1")
+      .bind(id)
+      .all<{ site: string }>();
+    const oldSites = oldSitesResult.results.map((r) => r.site);
+
     // Replace site assignments
     await db.prepare("DELETE FROM post_sites WHERE post_id = ?1").bind(id).run();
     for (const site of sites) {
@@ -158,11 +165,13 @@ export async function PUT(
         .run();
     }
 
-    // Trigger deploy if publishing or unpublishing
+    // Trigger deploy if publishing or unpublishing; deploy to union of old + new sites
+    // so removed sites also get rebuilt and no longer show the post
     let deployStatus: string | null = null;
     if (publish || wasPublished) {
+      const sitesToDeploy = [...new Set([...oldSites, ...sites])];
       try {
-        await triggerDeploy(env, sites);
+        await triggerDeploy(env, sitesToDeploy);
         deployStatus = "triggered";
       } catch (err) {
         deployStatus = `error: ${err}`;
