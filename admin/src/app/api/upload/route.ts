@@ -25,8 +25,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const folder = (formData.get("folder") as string | null) || "blog";
     const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
-    const key = `blog/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+    const key = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
 
     const { env } = await getCloudflareContext({ async: true });
     const arrayBuffer = await file.arrayBuffer();

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Plus, Edit, Trash2, X, Save } from "lucide-react";
+import { Plus, Edit, Trash2, X, Save, Upload } from "lucide-react";
 import { LOCALES } from "@/lib/types";
 
 interface EmployeeTranslation {
@@ -45,6 +45,7 @@ export default function EmployeesPage() {
     translations: emptyTranslations(),
   });
   const [activeLocale, setActiveLocale] = useState<"nl" | "en" | "fr">("nl");
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
 
   useEffect(() => {
     fetchEmployees();
@@ -274,15 +275,54 @@ export default function EmployeesPage() {
 
               <div>
                 <label className="block text-xs font-medium text-navy-500 uppercase tracking-wider mb-1">
-                  Photo URL
+                  Photo
                 </label>
-                <input
-                  type="text"
-                  value={form.photo_url}
-                  onChange={(e) => setForm({ ...form, photo_url: e.target.value })}
-                  className="w-full px-3 py-2 border border-steel-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/30"
-                  placeholder="https://cdn.fvbadvocaten.be/..."
-                />
+                {form.photo_url ? (
+                  <div className="relative inline-block">
+                    <img
+                      src={form.photo_url}
+                      alt="Avatar preview"
+                      className="h-24 w-24 rounded-full object-cover border border-steel-200"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setForm({ ...form, photo_url: "" })}
+                      className="absolute -top-1 -right-1 bg-white rounded-full p-0.5 shadow border border-steel-200 hover:bg-red-50"
+                    >
+                      <X className="w-3.5 h-3.5 text-navy-700" />
+                    </button>
+                  </div>
+                ) : (
+                  <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-steel-300 rounded-lg cursor-pointer hover:border-accent hover:bg-steel-50 transition-colors">
+                    <Upload className="w-5 h-5 text-steel-400 mb-1" />
+                    <span className="text-sm text-steel-500">
+                      {uploadingPhoto ? "Uploading..." : "Click to upload"}
+                    </span>
+                    <span className="text-xs text-steel-400 mt-0.5">JPEG, PNG, WebP (max 5MB)</span>
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      className="hidden"
+                      disabled={uploadingPhoto}
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0];
+                        if (!file) return;
+                        setUploadingPhoto(true);
+                        try {
+                          const fd = new FormData();
+                          fd.append("file", file);
+                          fd.append("folder", "employees");
+                          const res = await fetch("/api/upload", { method: "POST", body: fd });
+                          const data = await res.json();
+                          if (res.ok) setForm((f) => ({ ...f, photo_url: data.url }));
+                        } finally {
+                          setUploadingPhoto(false);
+                          e.target.value = "";
+                        }
+                      }}
+                    />
+                  </label>
+                )}
               </div>
 
               {/* Locale tabs */}
