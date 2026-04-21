@@ -196,7 +196,7 @@ export async function DELETE(
       .bind(id)
       .all<{ site: string }>();
 
-    const sites = sitesResult.results.map((r) => r.site);
+    const sites = sitesResult.results.map((r: { site: string }) => r.site);
 
     // Cascading deletes handle translations, sites, categories, tags
     await db.prepare("DELETE FROM post_translations WHERE post_id = ?1").bind(id).run();
