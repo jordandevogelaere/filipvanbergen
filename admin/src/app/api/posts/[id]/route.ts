@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { triggerDeploy } from "@/lib/deploy";
 
 export async function GET(
   _request: NextRequest,
@@ -160,41 +161,11 @@ export async function PUT(
     // Trigger deploy if publishing or unpublishing
     let deployStatus: string | null = null;
     if (publish || wasPublished) {
-      const githubToken = env.GITHUB_TOKEN;
-      const githubRepo = env.GITHUB_REPO;
-      if (!githubToken) {
-        deployStatus = "error: GITHUB_TOKEN not set";
-      } else if (!githubRepo) {
-        deployStatus = "error: GITHUB_REPO not set";
-      } else {
-        try {
-          const ghRes = await fetch(`https://api.github.com/repos/${githubRepo}/dispatches`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${githubToken}`,
-              Accept: "application/vnd.github+json",
-              "Content-Type": "application/json",
-              "User-Agent": "fvb-admin",
-            },
-            body: JSON.stringify({
-              event_type: "blog_publish",
-              client_payload: {
-                sites: sites.join(","),
-                deploy_advocaten: sites.includes("fvbadvocaten") ? "true" : "false",
-                deploy_mediation: sites.includes("fvbmediation") ? "true" : "false",
-                deploy_arbitration: sites.includes("fvbarbitration") ? "true" : "false",
-              },
-            }),
-          });
-          if (ghRes.ok) {
-            deployStatus = "triggered";
-          } else {
-            const text = await ghRes.text();
-            deployStatus = `error: ${ghRes.status} ${text}`;
-          }
-        } catch (deployErr) {
-          deployStatus = `error: ${deployErr}`;
-        }
+      try {
+        await triggerDeploy(env, sites);
+        deployStatus = "triggered";
+      } catch (err) {
+        deployStatus = `error: ${err}`;
       }
     }
 
@@ -215,12 +186,28 @@ export async function DELETE(
     const { env } = await getCloudflareContext({ async: true });
     const db = env.DB;
 
+    const post = await db
+      .prepare("SELECT status FROM posts WHERE id = ?1")
+      .bind(id)
+      .first<{ status: string }>();
+
+    const sitesResult = await db
+      .prepare("SELECT site FROM post_sites WHERE post_id = ?1")
+      .bind(id)
+      .all<{ site: string }>();
+
+    const sites = sitesResult.results.map((r) => r.site);
+
     // Cascading deletes handle translations, sites, categories, tags
     await db.prepare("DELETE FROM post_translations WHERE post_id = ?1").bind(id).run();
     await db.prepare("DELETE FROM post_sites WHERE post_id = ?1").bind(id).run();
     await db.prepare("DELETE FROM post_categories WHERE post_id = ?1").bind(id).run();
     await db.prepare("DELETE FROM post_tags WHERE post_id = ?1").bind(id).run();
     await db.prepare("DELETE FROM posts WHERE id = ?1").bind(id).run();
+
+    if (post?.status === "published" && sites.length > 0) {
+      await triggerDeploy(env, sites);
+    }
 
     return NextResponse.json({ success: true });
   } catch (e) {
