@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { headers } from "next/headers";
+import { triggerDeploy } from "@/lib/deploy";
 
 export async function GET() {
   try {
@@ -114,31 +115,7 @@ export async function POST(request: NextRequest) {
 
     // Trigger deploy if publishing
     if (publish) {
-      try {
-        const githubToken = env.GITHUB_TOKEN;
-        const githubRepo = env.GITHUB_REPO || "filipvanbergen/karachi";
-        if (githubToken) {
-          await fetch(`https://api.github.com/repos/${githubRepo}/dispatches`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${githubToken}`,
-              Accept: "application/vnd.github.v3+json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              event_type: "blog_publish",
-              client_payload: {
-                sites: sites.join(","),
-                deploy_advocaten: sites.includes("fvbadvocaten") ? "true" : "false",
-                deploy_mediation: sites.includes("fvbmediation") ? "true" : "false",
-                deploy_arbitration: sites.includes("fvbarbitration") ? "true" : "false",
-              },
-            }),
-          });
-        }
-      } catch (deployErr) {
-        console.error("Deploy trigger failed:", deployErr);
-      }
+      await triggerDeploy(env, sites);
     }
 
     return NextResponse.json({ id, slug, status });
