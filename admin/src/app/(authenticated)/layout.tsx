@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import Sidebar from "@/components/Sidebar";
+import { ToastProvider } from "@/components/ToastProvider";
 
 export default async function AuthenticatedLayout({
   children,
@@ -10,9 +11,11 @@ export default async function AuthenticatedLayout({
   const email = headersList.get("cf-access-authenticated-user-email") || "admin";
 
   return (
-    <div className="flex min-h-screen">
-      <Sidebar email={email} />
-      <main className="flex-1 p-8">{children}</main>
-    </div>
+    <ToastProvider>
+      <div className="flex min-h-screen">
+        <Sidebar email={email} />
+        <main className="flex-1 p-8">{children}</main>
+      </div>
+    </ToastProvider>
   );
 }

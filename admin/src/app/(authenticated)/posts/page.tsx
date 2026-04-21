@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Plus, Edit, Trash2, Eye, EyeOff, BarChart3 } from "lucide-react";
+import { useToast } from "@/components/ToastProvider";
 
 interface PostRow {
   id: string;
@@ -18,6 +19,7 @@ interface PostRow {
 export default function PostsPage() {
   const [posts, setPosts] = useState<PostRow[]>([]);
   const [loading, setLoading] = useState(true);
+  const toast = useToast();
 
   useEffect(() => {
     fetch("/api/posts")
@@ -31,9 +33,16 @@ export default function PostsPage() {
 
   async function handleDelete(id: string) {
     if (!confirm("Are you sure you want to delete this post?")) return;
-    const res = await fetch(`/api/posts/${id}`, { method: "DELETE" });
-    if (res.ok) {
-      setPosts((prev) => prev.filter((p) => p.id !== id));
+    try {
+      const res = await fetch(`/api/posts/${id}`, { method: "DELETE" });
+      if (res.ok) {
+        setPosts((prev) => prev.filter((p) => p.id !== id));
+        toast.success("Post deleted successfully");
+      } else {
+        toast.error("Failed to delete post");
+      }
+    } catch {
+      toast.error("Failed to delete post");
     }
   }
 
