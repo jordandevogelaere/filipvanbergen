@@ -154,7 +154,7 @@ export async function PUT(
       .prepare("SELECT site FROM post_sites WHERE post_id = ?1")
       .bind(id)
       .all<{ site: string }>();
-    const oldSites = oldSitesResult.results.map((r) => r.site);
+    const oldSites = oldSitesResult.results.map((r: { site: string }) => r.site);
 
     // Replace site assignments
     await db.prepare("DELETE FROM post_sites WHERE post_id = ?1").bind(id).run();
