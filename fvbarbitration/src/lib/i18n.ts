@@ -33,8 +33,16 @@ function nl() {
     },
     mission: {
       title: "Mission Statement",
-      p1: "Arbitrage Filip van Bergen biedt een professioneel en efficiënt alternatief voor de klassieke gerechtelijke procedure. Als onafhankelijk arbiter zorgt Filip van Bergen voor een snelle, vertrouwelijke en deskundige beslechting van geschillen.",
-      p2: "Door zijn uitgebreide ervaring als advocaat en bemiddelaar combineert hij juridische expertise met een pragmatische benadering van conflictoplossing.",
+      questions: [
+        "Bent u een aannemer wiens facturen voor uitgevoerde werken nog niet betaald zijn door de opdrachtgever?",
+        "Bent u een onderaannemer, wiens facturen aan de aannemer lang blijven open staan door lang aanslepende gerechtelijke procedures?",
+        "Bent u een bouwheer/promotor, en stelt u gebreken vast bij uitgevoerde werken?",
+      ],
+      solution: "Arbitrage kan dan voor u een oplossing bieden.",
+      legal: "De tussenkomst van een arbitragecomité is bekrachtigd in het Belgisch Gerechtelijk Wetboek.",
+      closing: "Arbitrage kan van toepassing gemaakt worden door de aanpassing van uw contractvoorwaarden. Voor meer informatie, aarzelt u niet om contact op te nemen met Filip.",
+      p1: "Filip van Bergen heeft jarenlange ervaring met het voeren van arbitragesprocedures in nationale en internationale geschillen. Hij staat cliënten bij voor diverse arbitrageinstellingen in bouwzaken en handelsgeschillen.",
+      p2: "Aarzelt u niet om contact op te nemen met Filip voor meer informatie.",
     },
     advantages: {
       title: "Voordelen",
@@ -103,8 +111,16 @@ function en() {
     },
     mission: {
       title: "Mission Statement",
-      p1: "Arbitration Filip van Bergen offers a professional and efficient alternative to traditional court proceedings. As an independent arbitrator, Filip van Bergen ensures a fast, confidential and expert resolution of disputes.",
-      p2: "Through his extensive experience as a lawyer and mediator, he combines legal expertise with a pragmatic approach to conflict resolution.",
+      questions: [
+        "Are you a contractor whose invoices for completed works have not yet been paid by the client?",
+        "Are you a subcontractor whose invoices to the contractor remain outstanding due to lengthy court proceedings?",
+        "Are you a building owner/developer who has identified defects in completed works?",
+      ],
+      solution: "Arbitration may then offer you a solution.",
+      legal: "The involvement of an arbitration committee is enshrined in the Belgian Judicial Code.",
+      closing: "Arbitration can be made applicable by adapting your contractual terms. For more information, do not hesitate to contact Filip.",
+      p1: "Filip van Bergen has years of experience conducting arbitration proceedings in national and international disputes. He represents clients before various arbitration institutions in construction and commercial disputes.",
+      p2: "Do not hesitate to contact Filip for more information.",
     },
     advantages: {
       title: "Advantages",
@@ -173,8 +189,16 @@ function fr() {
     },
     mission: {
       title: "Mission",
-      p1: "Arbitrage Filip van Bergen offre une alternative professionnelle et efficace aux procédures judiciaires classiques. En tant qu'arbitre indépendant, Filip van Bergen assure un règlement rapide, confidentiel et expert des litiges.",
-      p2: "Grâce à sa vaste expérience en tant qu'avocat et médiateur, il combine expertise juridique et approche pragmatique de la résolution des conflits.",
+      questions: [
+        "Êtes-vous un entrepreneur dont les factures pour des travaux exécutés n'ont pas encore été payées par le maître d'ouvrage?",
+        "Êtes-vous un sous-traitant dont les factures à l'entrepreneur restent longtemps impayées en raison de longues procédures judiciaires?",
+        "Êtes-vous un maître d'ouvrage/promoteur qui constate des défauts dans des travaux exécutés?",
+      ],
+      solution: "L'arbitrage peut alors vous offrir une solution.",
+      legal: "L'intervention d'un comité d'arbitrage est consacrée dans le Code judiciaire belge.",
+      closing: "L'arbitrage peut être rendu applicable par l'adaptation de vos conditions contractuelles. Pour plus d'informations, n'hésitez pas à contacter Filip.",
+      p1: "Filip van Bergen dispose de nombreuses années d'expérience dans la conduite de procédures d'arbitrage dans des litiges nationaux et internationaux. Il assiste des clients devant diverses institutions d'arbitrage dans des affaires de construction et des litiges commerciaux.",
+      p2: "N'hésitez pas à contacter Filip pour plus d'informations.",
     },
     advantages: {
       title: "Avantages",

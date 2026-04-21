@@ -47,7 +47,13 @@ export default async function HomePage({
         <Container>
           <SectionHeading>{t.mission.title}</SectionHeading>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-lg leading-relaxed text-gray-600">{t.mission.p1}</p>
+            {t.mission.questions.map((q, i) => (
+              <p key={i} className="mt-4 text-lg leading-relaxed text-gray-600">{q}</p>
+            ))}
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">{t.mission.solution}</p>
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">{t.mission.legal}</p>
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">{t.mission.closing}</p>
+            <p className="mt-10 text-lg leading-relaxed text-gray-600">{t.mission.p1}</p>
             <p className="mt-6 text-lg leading-relaxed text-gray-600">{t.mission.p2}</p>
           </div>
         </Container>
