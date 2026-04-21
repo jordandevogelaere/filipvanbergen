@@ -9,6 +9,87 @@ import LatestPosts from "@/components/LatestPosts";
 import { CONTACT } from "@/lib/constants";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
 import { buildAlternates, buildOpenGraph } from "@/lib/seo";
+import { fetchEmployees, type Employee } from "@/lib/blog-api";
+
+function PartnerCard({ employee, locale }: { employee: Employee; locale: Locale }) {
+  const t = employee.translations[locale] ?? employee.translations["nl"];
+  if (!t) return null;
+  const paragraphs = t.bio ? t.bio.split("\n").filter(Boolean) : [];
+
+  return (
+    <div className="bg-navy-800 mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-xl">
+      <div className="p-8 md:p-10">
+        <div className="flex items-start gap-6">
+          {employee.photo_url ? (
+            <img
+              src={employee.photo_url}
+              alt={employee.name}
+              width={150}
+              height={150}
+              className="h-24 w-24 flex-shrink-0 rounded-full object-cover"
+            />
+          ) : (
+            <div className="bg-navy-600 flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-full text-2xl font-bold text-white">
+              {employee.initials}
+            </div>
+          )}
+          <div className="flex-1">
+            <h3 className="font-heading text-3xl font-bold tracking-wide text-white">
+              {employee.name}
+            </h3>
+            <p className="mt-1 text-sm font-light uppercase tracking-[0.2em] text-white/60">
+              {t.role}
+            </p>
+          </div>
+        </div>
+        <div className="bg-accent mt-4 h-0.5 w-12" />
+        {paragraphs.length > 0 && (
+          <div className="mt-5 space-y-4 leading-relaxed text-white/80">
+            {paragraphs.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function EmployeeCard({
+  employee,
+  locale,
+  variant,
+}: {
+  employee: Employee;
+  locale: Locale;
+  variant: "advocaten" | "team";
+}) {
+  const t = employee.translations[locale] ?? employee.translations["nl"];
+  if (!t) return null;
+
+  const borderClass = variant === "advocaten" ? "border-navy-700" : "border-steel-300";
+  const avatarClass = variant === "advocaten" ? "bg-navy-800 h-14 w-14 text-lg" : "bg-navy-700 h-12 w-12 text-sm";
+
+  return (
+    <div className={`${borderClass} flex gap-5 rounded-xl border-l-4 bg-white p-6 shadow-sm`}>
+      <div className={`${avatarClass} flex shrink-0 items-center justify-center rounded-full font-bold text-white`}>
+        {employee.initials}
+      </div>
+      <div>
+        <h3 className={`font-heading text-navy-800 font-bold ${variant === "advocaten" ? "text-lg" : ""}`}>
+          {employee.name}
+        </h3>
+        <p className="text-navy-500 text-xs font-medium uppercase tracking-wider">{t.role}</p>
+        {t.bio && (
+          <p className="mt-3 text-sm leading-relaxed text-gray-600">{t.bio}</p>
+        )}
+        {t.languages && (
+          <p className="mt-3 text-xs font-medium tracking-wide text-gray-400">{t.languages}</p>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -38,6 +119,11 @@ export default async function HomePage({
   const { locale } = await params;
   const loc = locale as Locale;
   const t = getDictionary(loc);
+
+  const allEmployees = await fetchEmployees();
+  const partner = allEmployees.find((e) => e.group === "partner");
+  const advocaten = allEmployees.filter((e) => e.group === "advocaten");
+  const team = allEmployees.filter((e) => e.group === "team");
 
   return (
     <>
@@ -78,105 +164,38 @@ export default async function HomePage({
         <Container>
           <SectionHeading>{t.whoIsWho.title}</SectionHeading>
 
-          {/* Filip van Bergen - featured hero card */}
-          <div className="bg-navy-800 mx-auto max-w-5xl overflow-hidden rounded-2xl shadow-xl">
-            <div className="p-8 md:p-10">
-              <div className="flex items-start gap-6">
-                <img
-                  src="/images/profile-filip.jpg"
-                  alt="Filip van Bergen"
-                  width={150}
-                  height={150}
-                  className="h-24 w-24 flex-shrink-0 rounded-full object-cover"
-                />
-                <div className="flex-1">
-                  <h3 className="font-heading text-3xl font-bold tracking-wide text-white">
-                    Filip van Bergen
-                  </h3>
-                  <p className="mt-1 text-sm font-light uppercase tracking-[0.2em] text-white/60">
-                    {t.whoIsWho.filip.role}
-                  </p>
-                </div>
-              </div>
-              <div className="bg-accent mt-4 h-0.5 w-12" />
-              <div className="mt-5 space-y-4 leading-relaxed text-white/80">
-                {t.whoIsWho.filip.fullText.map((paragraph, i) => (
-                  <p key={i}>{paragraph}</p>
+          {/* Partner — featured hero card */}
+          {partner && (
+            <PartnerCard employee={partner} locale={loc} />
+          )}
+
+          {/* Advocaten */}
+          {advocaten.length > 0 && (
+            <div className="mx-auto mt-16 max-w-5xl">
+              <h4 className="text-navy-700 mb-8 text-center text-xs font-semibold uppercase tracking-[0.25em]">
+                {t.whoIsWho.advocaten}
+              </h4>
+              <div className="grid gap-8 md:grid-cols-2">
+                {advocaten.map((emp) => (
+                  <EmployeeCard key={emp.id} employee={emp} locale={loc} variant="advocaten" />
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* Advocaten */}
-          <div className="mx-auto mt-16 max-w-5xl">
-            <h4 className="text-navy-700 mb-8 text-center text-xs font-semibold uppercase tracking-[0.25em]">
-              {t.whoIsWho.advocaten}
-            </h4>
-            <div className="grid gap-8 md:grid-cols-2">
-              {/* Jonas Maes */}
-              <div className="border-navy-700 flex gap-5 rounded-xl border-l-4 bg-white p-6 shadow-sm">
-                <div className="bg-navy-800 flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-bold text-white">
-                  JM
-                </div>
-                <div>
-                  <h3 className="font-heading text-navy-800 text-lg font-bold">
-                    Jonas Maes
-                  </h3>
-                  <p className="text-navy-500 text-xs font-medium uppercase tracking-wider">
-                    {t.whoIsWho.jonas.role}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                    {t.whoIsWho.jonas.bio}
-                  </p>
-                  <p className="mt-3 text-xs font-medium tracking-wide text-gray-400">
-                    {t.whoIsWho.jonas.languages}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
 
           {/* Support team */}
-          <div className="mx-auto mt-16 max-w-5xl">
-            <h4 className="text-navy-700 mb-8 text-center text-xs font-semibold uppercase tracking-[0.25em]">
-              {t.whoIsWho.team}
-            </h4>
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="border-steel-300 flex gap-4 rounded-xl border-l-4 bg-white p-6 shadow-sm">
-                <div className="bg-navy-700 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
-                  XB
-                </div>
-                <div>
-                  <h3 className="font-heading text-navy-800 font-bold">
-                    Xander Buylaert
-                  </h3>
-                  <p className="text-navy-500 text-xs font-medium uppercase tracking-wider">
-                    {t.whoIsWho.xander.role}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                    {t.whoIsWho.xander.bio}
-                  </p>
-                </div>
-              </div>
-
-              <div className="border-steel-300 flex gap-4 rounded-xl border-l-4 bg-white p-6 shadow-sm">
-                <div className="bg-navy-700 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
-                  KS
-                </div>
-                <div>
-                  <h3 className="font-heading text-navy-800 font-bold">
-                    Kaylee Smagge
-                  </h3>
-                  <p className="text-navy-500 text-xs font-medium uppercase tracking-wider">
-                    {t.whoIsWho.kaylee.role}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                    {t.whoIsWho.kaylee.bio}
-                  </p>
-                </div>
+          {team.length > 0 && (
+            <div className="mx-auto mt-16 max-w-5xl">
+              <h4 className="text-navy-700 mb-8 text-center text-xs font-semibold uppercase tracking-[0.25em]">
+                {t.whoIsWho.team}
+              </h4>
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {team.map((emp) => (
+                  <EmployeeCard key={emp.id} employee={emp} locale={loc} variant="team" />
+                ))}
               </div>
             </div>
-          </div>
+          )}
         </Container>
       </section>
 

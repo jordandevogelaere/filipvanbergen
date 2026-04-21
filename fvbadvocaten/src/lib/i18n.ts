@@ -109,35 +109,6 @@ function nl() {
       title: "Wie is wie?",
       advocaten: "Advocaten",
       team: "Team",
-      filip: {
-        role: "Advocaat-partner",
-        fullText: [
-          "Filip heeft inmiddels meer dan 20 jaar ervaring opgebouwd in zowel het adviseren van cliënten als het verlenen van bijstand in nationale, Europese en internationale gerechtelijke procedures.",
-          "Hij studeerde cum laude af als Licentiaat in de Rechten aan de Vrije Universiteit Brussel, na kandidaturen aan de Universiteit Antwerpen, waarna hij onmiddellijk toetrad tot de Antwerpse balie.",
-          "Filip behaalde zijn diploma Bedrijfseconomie aan de Antwerp Management School.",
-          "Hij ontving bovendien het erkend certificaat Le Français Juridique van de Franse Kamer van Koophandel en Nijverheid voor het Vlaams Gewest.",
-          "Filip volgde de bijzondere Salduz-opleiding betreffende de bijstand bij verhoor van verdachten in strafzaken georganiseerd door de Orde van Advocaten te Antwerpen.",
-          "Hij is erkend als advocaat bij het Hof van Cassatie in strafzaken en is houder van het getuigschrift Bijzondere Opleiding Cassatieprocedure in Strafzaken.",
-          "Filip is aanvaard als Arbiter in het Instituut voor Arbitrage.",
-          "Hij is redacteur van verschillende juridische bijdragen in verschillende juridische tijdschriften en geeft op regelmatige basis voordrachten aan zowel advocaten als professionals actief in KMO's.",
-          "In het jaar 2007-2008 was Filip verantwoordelijke stage van de Vlaamse Conferentie bij de balie te Antwerpen.",
-          "Sinds 2008 is hij lid van de Raad van Bestuur van Advocaten zonder Grenzen.",
-          "Talen: Nederlands, Engels, Frans",
-        ],
-      },
-      jonas: {
-        role: "Advocaat",
-        bio: "Jonas behaalde zijn Master in de Rechten aan de Universiteit Antwerpen, waarna hij toetrad tot het team van Filip van Bergen. Hij behandelt nationale en internationale geschillen en is een begenadigd litigator.",
-        languages: "Nederlands · Frans · Engels · Duits",
-      },
-      xander: {
-        role: "Legal Assistant",
-        bio: "Xander behaalde zijn Bachelor in de rechtsgeleerdheid aan de Universiteit Antwerpen. Hij is gepassioneerd in grondig juridisch onderzoek en assisteert op administratief en juridisch vlak.",
-      },
-      kaylee: {
-        role: "Administratie & Office Manager",
-        bio: "Kaylee staat het team op administratief en organisatorisch vlak bij. Door haar accuratesse en stiptheid is zij een absolute meerwaarde voor het kantoor.",
-      },
     },
     vacatures: {
       title: "Vacatures",
@@ -292,35 +263,6 @@ function en() {
       title: "Our Team",
       advocaten: "Lawyers",
       team: "Team",
-      filip: {
-        role: "Partner",
-        fullText: [
-          "Filip has built up more than 20 years of experience in both advising clients and providing assistance in national, European and international legal proceedings.",
-          "He graduated cum laude with a Licentiate in Law from the Vrije Universiteit Brussel, after completing his candidatures at the University of Antwerp, after which he immediately joined the Antwerp bar.",
-          "Filip obtained his Business Economics degree from the Antwerp Management School.",
-          "He also received the recognized certificate Le Français Juridique from the French Chamber of Commerce and Industry for the Flemish Region.",
-          "Filip completed the special Salduz training on the assistance during interrogation of suspects in criminal cases, organized by the Order of Lawyers in Antwerp.",
-          "He is accredited as a lawyer at the Court of Cassation in criminal cases and holds the certificate of Special Training in Cassation Procedure in Criminal Cases.",
-          "Filip is accepted as an Arbitrator at the Institute of Arbitration.",
-          "He is an editor of various legal contributions in several legal journals and regularly gives lectures to both lawyers and professionals active in SMEs.",
-          "In the year 2007-2008, Filip was the internship coordinator of the Flemish Conference at the Antwerp bar.",
-          "Since 2008, he has been a member of the Board of Directors of Lawyers Without Borders.",
-          "Languages: Dutch, English, French",
-        ],
-      },
-      jonas: {
-        role: "Lawyer",
-        bio: "Jonas obtained his Master of Laws at the University of Antwerp, after which he joined the team of Filip van Bergen. He handles national and international disputes and is a talented litigator.",
-        languages: "Dutch · French · English · German",
-      },
-      xander: {
-        role: "Legal Assistant",
-        bio: "Xander obtained his Bachelor of Law at the University of Antwerp. He is passionate about thorough legal research and assists on both administrative and legal matters.",
-      },
-      kaylee: {
-        role: "Administration & Office Manager",
-        bio: "Kaylee supports the team in administrative and organisational matters. Through her accuracy and punctuality she is an absolute asset to the firm.",
-      },
     },
     vacatures: {
       title: "Careers",
@@ -475,35 +417,6 @@ function fr() {
       title: "Notre équipe",
       advocaten: "Avocats",
       team: "Équipe",
-      filip: {
-        role: "Avocat-associé",
-        fullText: [
-          "Filip a acquis plus de 20 ans d'expérience tant dans le conseil aux clients que dans l'assistance en procédures judiciaires nationales, européennes et internationales.",
-          "Il a obtenu son diplôme de Licencié en Droit cum laude à la Vrije Universiteit Brussel, après ses candidatures à l'Université d'Anvers, après quoi il a immédiatement rejoint le barreau d'Anvers.",
-          "Filip a obtenu son diplôme d'Économie d'Entreprise à l'Antwerp Management School.",
-          "Il a en outre reçu le certificat reconnu Le Français Juridique de la Chambre de Commerce et d'Industrie Française pour la Région Flamande.",
-          "Filip a suivi la formation spéciale Salduz concernant l'assistance lors de l'interrogatoire de suspects dans des affaires pénales, organisée par l'Ordre des Avocats d'Anvers.",
-          "Il est reconnu comme avocat à la Cour de Cassation en matière pénale et est titulaire du certificat de Formation Spéciale en Procédure de Cassation en Matière Pénale.",
-          "Filip est accepté comme Arbitre à l'Institut d'Arbitrage.",
-          "Il est rédacteur de diverses contributions juridiques dans plusieurs revues juridiques et donne régulièrement des conférences tant aux avocats qu'aux professionnels actifs dans les PME.",
-          "Au cours de l'année 2007-2008, Filip était responsable de stage de la Conférence Flamande au barreau d'Anvers.",
-          "Depuis 2008, il est membre du Conseil d'Administration d'Avocats sans Frontières.",
-          "Langues : Néerlandais, Anglais, Français",
-        ],
-      },
-      jonas: {
-        role: "Avocat",
-        bio: "Jonas a obtenu son Master en Droit à l'Université d'Anvers, après quoi il a rejoint l'équipe de Filip van Bergen. Il traite des litiges nationaux et internationaux et est un plaideur talentueux.",
-        languages: "Néerlandais · Français · Anglais · Allemand",
-      },
-      xander: {
-        role: "Assistant juridique",
-        bio: "Xander a obtenu son Bachelor en Droit à l'Université d'Anvers. Il est passionné par la recherche juridique approfondie et assiste sur le plan administratif et juridique.",
-      },
-      kaylee: {
-        role: "Administration & Office Manager",
-        bio: "Kaylee soutient l'équipe sur le plan administratif et organisationnel. Par sa précision et sa ponctualité, elle est un atout absolu pour le cabinet.",
-      },
     },
     vacatures: {
       title: "Offres d'emploi",

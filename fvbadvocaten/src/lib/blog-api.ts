@@ -63,6 +63,27 @@ export async function fetchBlogPost(
   }
 }
 
+export interface Employee {
+  id: string;
+  name: string;
+  initials: string;
+  photo_url: string | null;
+  group: "partner" | "advocaten" | "team";
+  sort_order: number;
+  translations: Record<string, { role: string; bio: string | null; languages: string | null }>;
+}
+
+export async function fetchEmployees(): Promise<Employee[]> {
+  try {
+    const res = await fetch(`${BLOG_API_URL}/employees`, fetchOptions);
+    if (!res.ok) return [];
+    const data: { employees: Employee[] } = await res.json();
+    return data.employees ?? [];
+  } catch {
+    return [];
+  }
+}
+
 export async function fetchAllPostSlugs(): Promise<string[]> {
   try {
     const res = await fetch(

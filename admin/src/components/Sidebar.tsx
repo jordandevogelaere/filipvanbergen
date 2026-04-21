@@ -9,6 +9,7 @@ import {
   Tags,
   Share2,
   Settings,
+  Users,
 } from "lucide-react";
 
 const navItems = [
@@ -16,6 +17,7 @@ const navItems = [
   { href: "/posts", label: "Posts", icon: FileText },
   { href: "/categories", label: "Categories", icon: FolderOpen },
   { href: "/tags", label: "Tags", icon: Tags },
+  { href: "/employees", label: "Employees", icon: Users },
   { href: "/social", label: "Social Media", icon: Share2 },
   { href: "/settings", label: "Settings", icon: Settings },
 ];

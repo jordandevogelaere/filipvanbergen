@@ -3,6 +3,7 @@ import { cors } from "hono/cors";
 import type { Env } from "./types";
 import posts from "./routes/posts";
 import categories from "./routes/categories";
+import employees from "./routes/employees";
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -44,6 +45,7 @@ app.get("/settings", async (c) => {
 // Routes
 app.route("/posts", posts);
 app.route("/categories", categories);
+app.route("/employees", employees);
 
 // Health check
 app.get("/", (c) => c.json({ status: "ok", service: "fvb-blog-api" }));
