@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { Save, Eye, EyeOff, Globe, Send, Upload, X } from "lucide-react";
 import { LOCALES, SITES, type Locale } from "@/lib/types";
 import SocialShareButtons from "./SocialShareButtons";
+import { useToast } from "./ToastProvider";
 
 // Dynamic import to avoid SSR issues with TipTap
 const Editor = dynamic(() => import("./Editor"), { ssr: false });
@@ -57,8 +58,8 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [error, setError] = useState("");
   const [showShareButtons, setShowShareButtons] = useState(false);
+  const toast = useToast();
 
   function updateTranslation(
     locale: Locale,
@@ -92,7 +93,6 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
   }
 
   async function handleSave(publish: boolean) {
-    setError("");
     publish ? setPublishing(true) : setSaving(true);
 
     try {
@@ -116,19 +116,21 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Failed to save");
+        toast.error(data.error || "Failed to save");
         return;
       }
 
       if (publish) {
         setIsPublished(true);
         setShowShareButtons(true);
+        toast.success(postId ? "Post updated successfully" : "Post published successfully");
       } else {
+        toast.success(isPublished ? "Post unpublished" : "Draft saved");
         setIsPublished(false);
         router.push("/posts");
       }
     } catch {
-      setError("An error occurred");
+      toast.error("An error occurred");
     } finally {
       setSaving(false);
       setPublishing(false);
@@ -142,12 +144,6 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
 
   return (
     <div className="space-y-6">
-      {error && (
-        <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg text-sm">
-          {error}
-        </div>
-      )}
-
       {showShareButtons && (
         <div className="bg-green-50 border border-green-200 rounded-xl p-6">
           <h3 className="text-lg font-semibold text-green-800 mb-2">
@@ -310,7 +306,6 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
                     const file = e.target.files?.[0];
                     if (!file) return;
                     setUploading(true);
-                    setError("");
                     try {
                       const formData = new FormData();
                       formData.append("file", file);
@@ -320,13 +315,13 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
                       });
                       const data = await res.json();
                       if (!res.ok) {
-                        setError(data.error || "Upload failed");
+                        toast.error(data.error || "Upload failed");
                       } else {
                         setFeaturedImage(data.url);
                         setFeaturedImagePreview(data.previewUrl || data.url);
                       }
                     } catch {
-                      setError("Upload failed");
+                      toast.error("Upload failed");
                     } finally {
                       setUploading(false);
                       e.target.value = "";
