@@ -9,6 +9,11 @@ export const SITES: { value: Site; label: string }[] = [
   { value: "fvbmediation", label: "FVB Mediation" },
   { value: "fvbarbitration", label: "FVB Arbitration" },
 ];
+export const SITE_URLS: Record<Site, string> = {
+  fvbadvocaten: "https://www.fvbadvocaten.com",
+  fvbmediation: "https://www.fvbmediation.com",
+  fvbarbitration: "https://www.fvbarbitration.com",
+};
 export const PLATFORMS: { value: Platform; label: string }[] = [
   { value: "linkedin", label: "LinkedIn" },
   { value: "twitter", label: "X (Twitter)" },
