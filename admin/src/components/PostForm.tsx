@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Save, Eye, EyeOff, Globe, Send, Upload, X } from "lucide-react";
-import { LOCALES, SITES, type Locale } from "@/lib/types";
+import { LOCALES, SITES, SITE_URLS, type Locale, type Site } from "@/lib/types";
 import SocialShareButtons from "./SocialShareButtons";
 import { useToast } from "./ToastProvider";
 
@@ -58,7 +58,6 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
   const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [showShareButtons, setShowShareButtons] = useState(false);
   const toast = useToast();
 
   function updateTranslation(
@@ -122,7 +121,6 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
 
       if (publish) {
         setIsPublished(true);
-        setShowShareButtons(true);
         toast.success(postId ? "Post updated successfully" : "Post published successfully");
       } else {
         toast.success(isPublished ? "Post unpublished" : "Draft saved");
@@ -137,31 +135,8 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
     }
   }
 
-  // Build the post URL for social sharing
-  const postUrl = slug
-    ? `https://www.fvbadvocaten.com/nl/blog/${slug}/`
-    : "";
-
   return (
     <div className="space-y-6">
-      {showShareButtons && (
-        <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-green-800 mb-2">
-            Post Published!
-          </h3>
-          <p className="text-sm text-green-700 mb-4">
-            Share this post on social media:
-          </p>
-          <SocialShareButtons url={postUrl} title={translations.nl.title} />
-          <button
-            onClick={() => router.push("/posts")}
-            className="mt-4 text-sm text-green-700 underline"
-          >
-            Back to posts
-          </button>
-        </div>
-      )}
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main content area */}
         <div className="lg:col-span-2 space-y-6">
@@ -391,6 +366,23 @@ export default function PostForm({ postId, initialData }: PostFormProps) {
           </div>
         </div>
       </div>
+
+      {isPublished && slug && selectedSites.length > 0 && (
+        <div className="bg-white rounded-xl shadow-sm border border-steel-200 p-6 space-y-4">
+          <h3 className="text-base font-semibold text-navy-800">Share Links</h3>
+          {selectedSites.map((site) => (
+            <div key={site}>
+              <p className="text-sm font-medium text-navy-700 mb-2">
+                {SITES.find((s) => s.value === site)?.label ?? site}
+              </p>
+              <SocialShareButtons
+                url={`${SITE_URLS[site as Site]}/nl/blog/${slug}/`}
+                title={translations.nl.title}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -47,29 +47,32 @@ export default function SocialShareButtons({
   }
 
   return (
-    <div className="flex flex-wrap gap-3">
-      <button
-        onClick={handleCopy}
-        className="flex items-center gap-2 px-4 py-2 bg-steel-200 text-navy-700 rounded-lg text-sm font-medium hover:bg-steel-300 transition-colors"
-      >
-        {copied ? (
-          <Check className="w-4 h-4 text-green-600" />
-        ) : (
-          <Copy className="w-4 h-4" />
-        )}
-        {copied ? "Copied!" : "Copy URL"}
-      </button>
-
-      {platforms.map((platform) => (
+    <div>
+      <p className="text-xs font-mono text-navy-500 break-all mb-3">{url}</p>
+      <div className="flex flex-wrap gap-3">
         <button
-          key={platform.name}
-          onClick={() => handleShare(platform)}
-          className={`flex items-center gap-2 px-4 py-2 ${platform.color} text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity`}
+          onClick={handleCopy}
+          className="flex items-center gap-2 px-4 py-2 bg-steel-200 text-navy-700 rounded-lg text-sm font-medium hover:bg-steel-300 transition-colors"
         >
-          <ExternalLink className="w-4 h-4" />
-          {platform.name}
+          {copied ? (
+            <Check className="w-4 h-4 text-green-600" />
+          ) : (
+            <Copy className="w-4 h-4" />
+          )}
+          {copied ? "Copied!" : "Copy URL"}
         </button>
-      ))}
+
+        {platforms.map((platform) => (
+          <button
+            key={platform.name}
+            onClick={() => handleShare(platform)}
+            className={`flex items-center gap-2 px-4 py-2 ${platform.color} text-white rounded-lg text-sm font-medium hover:opacity-90 transition-opacity`}
+          >
+            <ExternalLink className="w-4 h-4" />
+            {platform.name}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
